@@ -1,4 +1,4 @@
-plugins {
+/*plugins {
 	id 'java'
 	id 'war'
 	id 'org.springframework.boot' version '3.5.3'
@@ -27,4 +27,161 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}*/
+
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.0'
+    id 'io.spring.dependency-management' version '1.1.4'
+    id 'org.asciidoctor.jvm.convert' version '3.3.2'
+}
+
+group = 'com.example'
+version = '1.0.0'
+
+// アーカイブ名の設定
+base {
+    archivesName = 'seating-app'
+}
+
+java {
+    sourceCompatibility = '21'
+    targetCompatibility = '21'
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Spring Boot Starter
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+    // Database
+    runtimeOnly 'com.mysql:mysql-connector-j'
+    runtimeOnly 'com.h2database:h2' // テスト用H2データベース
+
+    // Development Tools
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    // Annotation Processing
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // JSON Processing
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
+
+    // Utility Libraries
+    implementation 'org.apache.commons:commons-lang3:3.14.0'
+    implementation 'org.apache.commons:commons-collections4:4.4'
+
+    // Testing
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.10.1'
+    testImplementation 'org.mockito:mockito-core:5.7.0'
+    testImplementation 'org.mockito:mockito-junit-jupiter:5.7.0'
+    testImplementation 'org.assertj:assertj-core:3.24.2'
+    testImplementation 'org.testcontainers:junit-jupiter:1.19.3'
+    testImplementation 'org.testcontainers:mysql:1.19.3'
+
+    // Documentation (Spring REST Docs用)
+    testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+}
+
+// Java コンパイル設定
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+// テスト設定
+test {
+    useJUnitPlatform()
+
+    // テスト実行時のJVM設定
+    jvmArgs = ['-Dspring.profiles.active=test']
+
+    // テスト結果の詳細表示
+    testLogging {
+        events "passed", "skipped", "failed"
+        exceptionFormat "full"
+        showStandardStreams = false
+    }
+
+    // 並列実行の設定
+    maxParallelForks = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
+}
+
+// Spring Boot アプリケーション実行設定
+bootRun {
+    // 開発時の環境変数設定
+    environment 'SPRING_PROFILES_ACTIVE', 'development'
+}
+
+// JAR ファイル設定
+jar {
+    enabled = false // Spring Boot の fat JAR のみを使用
+    archiveClassifier = '' // classifier を空にしてメインJARにする
+}
+
+// Spring Boot JAR 設定
+bootJar {
+    archiveFileName = "${project.name}-${project.version}.jar"
+
+    // ビルド情報をJARに含める
+    manifest {
+        attributes(
+                'Implementation-Title': project.name,
+                'Implementation-Version': project.version,
+                'Implementation-Vendor': 'Seating App Team',
+                'Built-By': System.getProperty('user.name'),
+                'Built-Date': new Date().toString(),
+                'Built-JDK': System.getProperty('java.version')
+        )
+    }
+}
+
+// Clean タスクの拡張
+clean {
+    delete 'logs' // ログディレクトリも削除
+}
+
+// カスタムタスク: 開発環境での起動
+task devRun(type: org.springframework.boot.gradle.tasks.run.BootRun) {
+    group = 'application'
+    description = 'Run the application with development profile'
+    classpath = sourceSets.main.runtimeClasspath
+    main = 'com.example.seatingapp.SeatingAppApplication'
+
+    environment 'SPRING_PROFILES_ACTIVE', 'development'
+    environment 'LOGGING_LEVEL_ROOT', 'INFO'
+    environment 'LOGGING_LEVEL_COM_EXAMPLE_SEATINGAPP', 'DEBUG'
+}
+
+// 品質チェック用タスク
+task qualityCheck {
+    group = 'verification'
+    description = 'Run all quality checks'
+    dependsOn test
+
+    doLast {
+        println "==================================================="
+        println " 品質チェックが完了しました！"
+        println " テスト結果: build/reports/tests/test/index.html"
+        println "==================================================="
+    }
 }

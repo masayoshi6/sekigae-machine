@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>生徒一覧 - 席替えアプリ</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<h1>📋 生徒一覧</h1>
+
+<table border="1" cellpadding="8" cellspacing="0">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>名前</th>
+    <th>性別</th>
+    <th>座席位置</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="student : ${students}">
+    <td th:text="${student.id}">1</td>
+    <td th:text="${student.name}">山田太郎</td>
+    <td th:text="${student.gender}">男子</td>
+    <td th:text="'列: ' + ${student.seatColumn} + ' ／ 行: ' + ${student.seatRow}">1列2行</td>
+  </tr>
+  </tbody>
+</table>
+
+<br>
+<a th:href="@{/students/new}">＋ 生徒を新規追加</a>
+</body>
+</html>
