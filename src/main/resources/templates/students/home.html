@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>席替えアプリケーション</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<h1>🪑 席替えアプリケーション</h1>
+<p>学校現場で使用する席替えアプリケーションです。</p>
+
+<nav>
+  <ul>
+    <li><a th:href="@{/students}">📋 生徒一覧を見る</a></li>
+    <li><a th:href="@{/students/new}">➕ 新しい生徒を追加</a></li>
+  </ul>
+</nav>
+</body>
+</html>

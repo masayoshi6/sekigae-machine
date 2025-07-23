@@ -1,10 +1,12 @@
 package sekigae.sekigae.seatingapp.controller;
 
+import jakarta.validation.Valid;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,6 +38,7 @@ public class StudentController {
    */
   @GetMapping("/new")
   public String showCreateForm(Model model) {
+    // 初期状態では空の Student インスタンスを渡す（性別は null のまま）
     model.addAttribute("student", new Student());
     return "students/create"; // → templates/students/create.html
   }
@@ -44,7 +47,13 @@ public class StudentController {
    * 新規生徒を登録する（POST）
    */
   @PostMapping
-  public String registerStudent(@ModelAttribute Student student) {
+  public String registerStudent(@Valid @ModelAttribute Student student,
+      BindingResult bindingResult,
+      Model model) {
+    if (bindingResult.hasErrors()) {
+      return "students/create";
+    }
+
     studentService.registerStudent(student);
     return "redirect:/students";
   }
