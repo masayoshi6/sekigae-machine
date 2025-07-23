@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>生徒の新規登録</title>
+  <style>
+    .error { color: red; }
+  </style>
+</head>
+<body>
+<h1>生徒の新規登録</h1>
+
+<form th:action="@{/students}" th:object="${student}" method="post">
+
+  <!-- 名前 -->
+  <div>
+    <label for="name">名前：</label>
+    <input type="text" id="name" th:field="*{name}">
+    <div class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">名前エラー</div>
+  </div>
+
+  <!-- 性別（ラジオボタン） -->
+  <div>
+    <label>性別：</label>
+    <label><input type="radio" th:field="*{gender}" value="男子">男子</label>
+    <label><input type="radio" th:field="*{gender}" value="女子">女子</label>
+    <div class="error" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}">性別エラー</div>
+  </div>
+
+  <!-- 学籍番号 -->
+  <div>
+    <label for="studentCode">学籍番号：</label>
+    <input type="text" id="studentCode" th:field="*{studentCode}">
+    <div class="error" th:if="${#fields.hasErrors('studentCode')}" th:errors="*{studentCode}">
+      学籍番号エラー
+    </div>
+  </div>
+
+  <!-- 座席位置 -->
+  <div>
+    <label for="seatRow">座席（行）：</label>
+    <input type="number" id="seatRow" th:field="*{seatRow}" min="1">
+    <div class="error" th:if="${#fields.hasErrors('seatRow')}" th:errors="*{seatRow}">座席行エラー
+    </div>
+  </div>
+
+  <div>
+    <label for="seatColumn">座席（列）：</label>
+    <input type="number" id="seatColumn" th:field="*{seatColumn}" min="1">
+    <div class="error" th:if="${#fields.hasErrors('seatColumn')}" th:errors="*{seatColumn}">
+      座席列エラー
+    </div>
+  </div>
+
+  <div>
+    <button type="submit">登録</button>
+    <a th:href="@{/students}">一覧に戻る</a>
+  </div>
+</form>
+
+</body>
+</html>
