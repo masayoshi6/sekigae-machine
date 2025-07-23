@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>座席表 - 席替えアプリ</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f5f5f5;
+    }
+
+    .container {
+        display: flex;
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .seating-area {
+        background-color: #4ECDC4;
+        padding: 20px;
+        border-radius: 10px;
+        flex: 1;
+    }
+
+    .seating-title {
+        color: white;
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .seating-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .seat {
+        width: 60px;
+        height: 60px;
+        background-color: white;
+        border: 2px solid #e0e0e0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: bold;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .seat:hover {
+        background-color: #f0f0f0;
+        border-color: #333;
+    }
+
+    .seat.occupied {
+        background-color: #ffb3ba;
+        border-color: #ff6b7a;
+    }
+
+    .seat.male {
+        background-color: #b3d9ff;
+        border-color: #6bb6ff;
+    }
+
+    .seat.female {
+        background-color: #ffb3e6;
+        border-color: #ff6bcf;
+    }
+
+    .controls {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        flex: 1;
+        height: fit-content;
+    }
+
+    .control-section {
+        margin-bottom: 20px;
+        padding: 15px;
+        border: 1px solid #e0e0e0;
+        border-radius: 5px;
+    }
+
+    .control-title {
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    .button {
+        background-color: #e91e63;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+
+    .button:hover {
+        background-color: #c2185b;
+    }
+
+    .nav-links {
+        margin-bottom: 20px;
+    }
+
+    .nav-links a {
+        color: #333;
+        text-decoration: none;
+        margin-right: 15px;
+    }
+
+    .nav-links a:hover {
+        text-decoration: underline;
+    }
+
+    .blackboard {
+        background-color: #2d5a2d;
+        color: white;
+        text-align: center;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+<div class="nav-links">
+  <a th:href="@{/students}">📋 生徒一覧</a>
+  <a th:href="@{/students/new}">➕ 生徒追加</a>
+  <a th:href="@{/}">🏠 ホーム</a>
+</div>
+
+<h1>🪑 席替えアプリケーション</h1>
+
+<div class="container">
+  <!-- 座席表エリア -->
+  <div class="seating-area">
+    <div class="seating-title">今の座席 ℹ️</div>
+
+    <!-- 黒板 -->
+    <div class="blackboard">
+      黒板
+    </div>
+
+    <!-- 座席グリッド -->
+    <div class="seating-grid">
+      <th:block th:each="row, rowStat : ${seatingChart}">
+        <th:block th:each="seat, colStat : ${row}">
+          <div class="seat"
+               th:classappend="${seat != null} ? 'occupied' : ''"
+               th:data-row="${rowStat.index + 1}"
+               th:data-col="${colStat.index + 1}">
+            <span th:text="${seat != null} ? ${seat} : ''"></span>
+          </div>
+        </th:block>
+      </th:block>
+    </div>
+  </div>
+
+  <!-- 制御パネル -->
+  <div class="controls">
+    <div class="control-section">
+      <div class="control-title">🎯 条件</div>
+      <p>席替えの条件を設定できます</p>
+      <!-- TODO: 条件設定UI -->
+    </div>
+
+    <div class="control-section">
+      <div class="control-title">🔄 制約で制限する</div>
+      <label>
+        <input type="checkbox" id="preventAdjacent">
+        男の隣席から女を排除する
+      </label><br>
+      <label>
+        <input type="checkbox" id="preventSameGender">
+        男女の座席を交互にする
+      </label>
+    </div>
+
+    <div class="control-section">
+      <div class="control-title">🎲 交換対象を絞って</div>
+      <label>
+        <input type="checkbox" id="specificStudents">
+        交換対象を生徒を選ぶ
+      </label>
+    </div>
+
+    <div class="control-section">
+      <button class="button" onclick="shuffleSeats()">🔄 座替え</button>
+      <button class="button" onclick="saveConfiguration()" style="background-color: #666;">
+        ✏️ 座席の詳細を保存
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // 席替え機能（仮実装）
+  function shuffleSeats() {
+      if (confirm('座席をシャッフルしますか？')) {
+          // TODO: サーバーサイドの席替え処理を呼び出し
+          window.location.href = '/seating/shuffle';
+      }
+  }
+
+  // 設定保存機能（仮実装）
+  function saveConfiguration() {
+      alert('設定を保存しました（実装予定）');
+  }
+
+  // 座席クリック処理
+  document.querySelectorAll('.seat').forEach(seat => {
+      seat.addEventListener('click', function() {
+          const row = this.dataset.row;
+          const col = this.dataset.col;
+          const studentName = this.textContent.trim();
+
+          if (studentName) {
+              alert(`座席 ${row}行${col}列: ${studentName}`);
+          } else {
+              alert(`座席 ${row}行${col}列: 空席`);
+          }
+      });
+  });
+</script>
+</body>
+</html>

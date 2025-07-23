@@ -51,4 +51,6 @@ public class SeatingService {
     // 2. 男女の配置バランス
     // 3. 特定の生徒同士を隣にしない等の制約
   }
+
+  //public void shuffleSeats(int rows, int columns, SeatingConstraints constraints)
 }
