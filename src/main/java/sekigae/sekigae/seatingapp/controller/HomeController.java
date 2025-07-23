@@ -8,6 +8,6 @@ public class HomeController {
 
   @GetMapping("/")
   public String home() {
-    return "redirect:/students";
+    return "redirect:/seating"; // 座席表を最初に表示
   }
 }
