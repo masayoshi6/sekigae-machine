@@ -8,6 +8,13 @@
   </style>
 </head>
 <body>
+
+<div class="nav-links">
+  <a th:href="@{/seating}">🪑 座席表に戻る</a>
+  <a th:href="@{/students}">📋 生徒一覧</a>
+  <a th:href="@{/}">🏠 ホーム</a>
+</div>
+
 <h1>生徒の新規登録</h1>
 
 <form th:action="@{/students}" th:object="${student}" method="post">

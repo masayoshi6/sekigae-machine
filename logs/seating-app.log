@@ -1604,3 +1604,307 @@ org.thymeleaf.exceptions.TemplateInputException: Error resolving template [home/
 2025-07-25T14:01:21.262+09:00  INFO 46577 --- [seating-app] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2025-07-25T14:01:21.264+09:00  INFO 46577 --- [seating-app] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2025-07-25T14:01:21.267+09:00  INFO 46577 --- [seating-app] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-07-25T14:05:59.068+09:00  INFO 47394 --- [seating-app] [restartedMain] sekigae.sekigae.SekigaeApplication       : Starting SekigaeApplication using Java 23.0.2 with PID 47394 (/Users/okumurakiyoshikou/IdeaProjects/sekigae/build/classes/java/main started by okumurakiyoshikou in /Users/okumurakiyoshikou/IdeaProjects/sekigae)
+2025-07-25T14:05:59.069+09:00  INFO 47394 --- [seating-app] [restartedMain] sekigae.sekigae.SekigaeApplication       : The following 1 profile is active: "development"
+2025-07-25T14:05:59.094+09:00  INFO 47394 --- [seating-app] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-07-25T14:05:59.095+09:00  INFO 47394 --- [seating-app] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-07-25T14:05:59.326+09:00  INFO 47394 --- [seating-app] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-25T14:05:59.339+09:00  INFO 47394 --- [seating-app] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 11 ms. Found 1 JPA repository interface.
+2025-07-25T14:05:59.759+09:00  INFO 47394 --- [seating-app] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-25T14:05:59.763+09:00  INFO 47394 --- [seating-app] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-25T14:05:59.763+09:00  INFO 47394 --- [seating-app] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2025-07-25T14:05:59.778+09:00  INFO 47394 --- [seating-app] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-07-25T14:05:59.779+09:00  INFO 47394 --- [seating-app] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 684 ms
+2025-07-25T14:05:59.835+09:00  INFO 47394 --- [seating-app] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-07-25T14:05:59.895+09:00  INFO 47394 --- [seating-app] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@659d5344
+2025-07-25T14:05:59.896+09:00  INFO 47394 --- [seating-app] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-07-25T14:05:59.901+09:00  INFO 47394 --- [seating-app] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/sekigae_db?useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=UTF-8&serverTimezone=Asia/Tokyo'
+2025-07-25T14:05:59.975+09:00  INFO 47394 --- [seating-app] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-25T14:05:59.991+09:00  INFO 47394 --- [seating-app] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2025-07-25T14:06:00.002+09:00  INFO 47394 --- [seating-app] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-25T14:06:00.075+09:00  INFO 47394 --- [seating-app] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-25T14:06:00.098+09:00  WARN 47394 --- [seating-app] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-25T14:06:00.098+09:00  WARN 47394 --- [seating-app] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-07-25T14:06:00.342+09:00  INFO 47394 --- [seating-app] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-25T14:06:00.360+09:00  INFO 47394 --- [seating-app] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-25T14:06:00.559+09:00  WARN 47394 --- [seating-app] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-25T14:06:00.815+09:00  INFO 47394 --- [seating-app] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-07-25T14:06:00.820+09:00  INFO 47394 --- [seating-app] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2025-07-25T14:06:00.849+09:00  INFO 47394 --- [seating-app] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2025-07-25T14:06:00.859+09:00  INFO 47394 --- [seating-app] [restartedMain] sekigae.sekigae.SekigaeApplication       : Started SekigaeApplication in 1.928 seconds (process running for 2.092)
+2025-07-25T14:06:02.795+09:00  INFO 47394 --- [seating-app] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-07-25T14:06:02.795+09:00  INFO 47394 --- [seating-app] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-07-25T14:06:02.795+09:00  INFO 47394 --- [seating-app] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2025-07-25T14:32:01.996+09:00  INFO 47394 --- [seating-app] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-25T14:32:01.998+09:00  INFO 47394 --- [seating-app] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-07-25T14:32:02.003+09:00  INFO 47394 --- [seating-app] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-07-25T14:32:06.332+09:00  INFO 47771 --- [seating-app] [restartedMain] sekigae.sekigae.SekigaeApplication       : Starting SekigaeApplication using Java 23.0.2 with PID 47771 (/Users/okumurakiyoshikou/IdeaProjects/sekigae/build/classes/java/main started by okumurakiyoshikou in /Users/okumurakiyoshikou/IdeaProjects/sekigae)
+2025-07-25T14:32:06.333+09:00  INFO 47771 --- [seating-app] [restartedMain] sekigae.sekigae.SekigaeApplication       : The following 1 profile is active: "development"
+2025-07-25T14:32:06.358+09:00  INFO 47771 --- [seating-app] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-07-25T14:32:06.358+09:00  INFO 47771 --- [seating-app] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-07-25T14:32:06.605+09:00  INFO 47771 --- [seating-app] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-25T14:32:06.620+09:00  INFO 47771 --- [seating-app] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 1 JPA repository interface.
+2025-07-25T14:32:07.053+09:00  INFO 47771 --- [seating-app] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-25T14:32:07.057+09:00  INFO 47771 --- [seating-app] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-25T14:32:07.057+09:00  INFO 47771 --- [seating-app] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2025-07-25T14:32:07.073+09:00  INFO 47771 --- [seating-app] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-07-25T14:32:07.073+09:00  INFO 47771 --- [seating-app] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 715 ms
+2025-07-25T14:32:07.135+09:00  INFO 47771 --- [seating-app] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-07-25T14:32:07.197+09:00  INFO 47771 --- [seating-app] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@ee350ec
+2025-07-25T14:32:07.197+09:00  INFO 47771 --- [seating-app] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-07-25T14:32:07.202+09:00  INFO 47771 --- [seating-app] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/sekigae_db?useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=UTF-8&serverTimezone=Asia/Tokyo'
+2025-07-25T14:32:07.295+09:00  INFO 47771 --- [seating-app] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-25T14:32:07.316+09:00  INFO 47771 --- [seating-app] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2025-07-25T14:32:07.329+09:00  INFO 47771 --- [seating-app] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-25T14:32:07.422+09:00  INFO 47771 --- [seating-app] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-25T14:32:07.446+09:00  WARN 47771 --- [seating-app] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-25T14:32:07.447+09:00  WARN 47771 --- [seating-app] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-07-25T14:32:07.698+09:00  INFO 47771 --- [seating-app] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-25T14:32:07.715+09:00  INFO 47771 --- [seating-app] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-25T14:32:07.934+09:00  WARN 47771 --- [seating-app] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-25T14:32:08.202+09:00  INFO 47771 --- [seating-app] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-07-25T14:32:08.207+09:00  INFO 47771 --- [seating-app] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2025-07-25T14:32:08.251+09:00  INFO 47771 --- [seating-app] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2025-07-25T14:32:08.259+09:00  INFO 47771 --- [seating-app] [restartedMain] sekigae.sekigae.SekigaeApplication       : Started SekigaeApplication in 2.063 seconds (process running for 2.228)
+2025-07-25T14:32:10.132+09:00  INFO 47771 --- [seating-app] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-07-25T14:32:10.132+09:00  INFO 47771 --- [seating-app] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-07-25T14:32:10.133+09:00  INFO 47771 --- [seating-app] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-07-25T14:40:02.313+09:00  INFO 47771 --- [seating-app] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-25T14:40:02.315+09:00  INFO 47771 --- [seating-app] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-07-25T14:40:02.320+09:00  INFO 47771 --- [seating-app] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-07-25T14:40:05.102+09:00  INFO 47831 --- [seating-app] [restartedMain] sekigae.sekigae.SekigaeApplication       : Starting SekigaeApplication using Java 23.0.2 with PID 47831 (/Users/okumurakiyoshikou/IdeaProjects/sekigae/build/classes/java/main started by okumurakiyoshikou in /Users/okumurakiyoshikou/IdeaProjects/sekigae)
+2025-07-25T14:40:05.103+09:00  INFO 47831 --- [seating-app] [restartedMain] sekigae.sekigae.SekigaeApplication       : The following 1 profile is active: "development"
+2025-07-25T14:40:05.127+09:00  INFO 47831 --- [seating-app] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-07-25T14:40:05.127+09:00  INFO 47831 --- [seating-app] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-07-25T14:40:05.366+09:00  INFO 47831 --- [seating-app] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-25T14:40:05.379+09:00  INFO 47831 --- [seating-app] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 11 ms. Found 1 JPA repository interface.
+2025-07-25T14:40:05.820+09:00  INFO 47831 --- [seating-app] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-25T14:40:05.824+09:00  INFO 47831 --- [seating-app] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-25T14:40:05.824+09:00  INFO 47831 --- [seating-app] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2025-07-25T14:40:05.842+09:00  INFO 47831 --- [seating-app] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-07-25T14:40:05.842+09:00  INFO 47831 --- [seating-app] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 715 ms
+2025-07-25T14:40:05.904+09:00  INFO 47831 --- [seating-app] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-07-25T14:40:05.981+09:00  INFO 47831 --- [seating-app] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@659d5344
+2025-07-25T14:40:05.982+09:00  INFO 47831 --- [seating-app] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-07-25T14:40:05.987+09:00  INFO 47831 --- [seating-app] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/sekigae_db?useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=UTF-8&serverTimezone=Asia/Tokyo'
+2025-07-25T14:40:06.095+09:00  INFO 47831 --- [seating-app] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-25T14:40:06.115+09:00  INFO 47831 --- [seating-app] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2025-07-25T14:40:06.127+09:00  INFO 47831 --- [seating-app] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-25T14:40:06.217+09:00  INFO 47831 --- [seating-app] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-25T14:40:06.241+09:00  WARN 47831 --- [seating-app] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-25T14:40:06.242+09:00  WARN 47831 --- [seating-app] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-07-25T14:40:06.510+09:00  INFO 47831 --- [seating-app] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-25T14:40:06.532+09:00  INFO 47831 --- [seating-app] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-25T14:40:06.753+09:00  WARN 47831 --- [seating-app] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-25T14:40:07.043+09:00  INFO 47831 --- [seating-app] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-07-25T14:40:07.050+09:00  INFO 47831 --- [seating-app] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2025-07-25T14:40:07.100+09:00  INFO 47831 --- [seating-app] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2025-07-25T14:40:07.112+09:00  INFO 47831 --- [seating-app] [restartedMain] sekigae.sekigae.SekigaeApplication       : Started SekigaeApplication in 2.152 seconds (process running for 2.332)
+2025-07-25T14:40:08.879+09:00  INFO 47831 --- [seating-app] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-07-25T14:40:08.879+09:00  INFO 47831 --- [seating-app] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-07-25T14:40:08.880+09:00  INFO 47831 --- [seating-app] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-07-25T14:43:06.634+09:00  INFO 47831 --- [seating-app] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-25T14:43:06.637+09:00  INFO 47831 --- [seating-app] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-07-25T14:43:06.645+09:00  INFO 47831 --- [seating-app] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-07-25T14:43:09.192+09:00  INFO 47880 --- [seating-app] [restartedMain] sekigae.sekigae.SekigaeApplication       : Starting SekigaeApplication using Java 23.0.2 with PID 47880 (/Users/okumurakiyoshikou/IdeaProjects/sekigae/build/classes/java/main started by okumurakiyoshikou in /Users/okumurakiyoshikou/IdeaProjects/sekigae)
+2025-07-25T14:43:09.193+09:00  INFO 47880 --- [seating-app] [restartedMain] sekigae.sekigae.SekigaeApplication       : The following 1 profile is active: "development"
+2025-07-25T14:43:09.221+09:00  INFO 47880 --- [seating-app] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-07-25T14:43:09.221+09:00  INFO 47880 --- [seating-app] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-07-25T14:43:09.456+09:00  INFO 47880 --- [seating-app] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-25T14:43:09.470+09:00  INFO 47880 --- [seating-app] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 11 ms. Found 1 JPA repository interface.
+2025-07-25T14:43:09.923+09:00  INFO 47880 --- [seating-app] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-25T14:43:09.928+09:00  INFO 47880 --- [seating-app] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-25T14:43:09.928+09:00  INFO 47880 --- [seating-app] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2025-07-25T14:43:09.943+09:00  INFO 47880 --- [seating-app] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-07-25T14:43:09.943+09:00  INFO 47880 --- [seating-app] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 722 ms
+2025-07-25T14:43:10.009+09:00  INFO 47880 --- [seating-app] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-07-25T14:43:10.074+09:00  INFO 47880 --- [seating-app] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@ee350ec
+2025-07-25T14:43:10.074+09:00  INFO 47880 --- [seating-app] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-07-25T14:43:10.079+09:00  INFO 47880 --- [seating-app] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/sekigae_db?useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=UTF-8&serverTimezone=Asia/Tokyo'
+2025-07-25T14:43:10.159+09:00  INFO 47880 --- [seating-app] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-25T14:43:10.177+09:00  INFO 47880 --- [seating-app] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2025-07-25T14:43:10.188+09:00  INFO 47880 --- [seating-app] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-25T14:43:10.266+09:00  INFO 47880 --- [seating-app] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-25T14:43:10.288+09:00  WARN 47880 --- [seating-app] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-25T14:43:10.289+09:00  WARN 47880 --- [seating-app] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-07-25T14:43:10.539+09:00  INFO 47880 --- [seating-app] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-25T14:43:10.555+09:00  INFO 47880 --- [seating-app] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-25T14:43:10.768+09:00  WARN 47880 --- [seating-app] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-25T14:43:11.062+09:00  INFO 47880 --- [seating-app] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-07-25T14:43:11.069+09:00  INFO 47880 --- [seating-app] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2025-07-25T14:43:11.107+09:00  INFO 47880 --- [seating-app] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2025-07-25T14:43:11.119+09:00  INFO 47880 --- [seating-app] [restartedMain] sekigae.sekigae.SekigaeApplication       : Started SekigaeApplication in 2.068 seconds (process running for 2.228)
+2025-07-25T14:43:12.975+09:00  INFO 47880 --- [seating-app] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-07-25T14:43:12.975+09:00  INFO 47880 --- [seating-app] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-07-25T14:43:12.976+09:00  INFO 47880 --- [seating-app] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-07-25T14:51:40.016+09:00  WARN 47880 --- [seating-app] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Retrograde clock change detected (housekeeper delta=29s756ms), soft-evicting connections from pool.
+2025-07-25T14:59:28.663+09:00  INFO 47880 --- [seating-app] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-25T14:59:28.667+09:00  INFO 47880 --- [seating-app] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-07-25T14:59:28.669+09:00  INFO 47880 --- [seating-app] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-07-25T14:59:37.066+09:00  INFO 48258 --- [seating-app] [restartedMain] sekigae.sekigae.SekigaeApplication       : Starting SekigaeApplication using Java 23.0.2 with PID 48258 (/Users/okumurakiyoshikou/IdeaProjects/sekigae/build/classes/java/main started by okumurakiyoshikou in /Users/okumurakiyoshikou/IdeaProjects/sekigae)
+2025-07-25T14:59:37.067+09:00  INFO 48258 --- [seating-app] [restartedMain] sekigae.sekigae.SekigaeApplication       : The following 1 profile is active: "development"
+2025-07-25T14:59:37.091+09:00  INFO 48258 --- [seating-app] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-07-25T14:59:37.091+09:00  INFO 48258 --- [seating-app] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-07-25T14:59:37.317+09:00  INFO 48258 --- [seating-app] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-25T14:59:37.331+09:00  INFO 48258 --- [seating-app] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10 ms. Found 1 JPA repository interface.
+2025-07-25T14:59:37.782+09:00  INFO 48258 --- [seating-app] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-25T14:59:37.786+09:00  INFO 48258 --- [seating-app] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-25T14:59:37.786+09:00  INFO 48258 --- [seating-app] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2025-07-25T14:59:37.802+09:00  INFO 48258 --- [seating-app] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-07-25T14:59:37.802+09:00  INFO 48258 --- [seating-app] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 711 ms
+2025-07-25T14:59:37.863+09:00  INFO 48258 --- [seating-app] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-07-25T14:59:37.928+09:00  INFO 48258 --- [seating-app] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2bf15048
+2025-07-25T14:59:37.929+09:00  INFO 48258 --- [seating-app] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-07-25T14:59:37.933+09:00  INFO 48258 --- [seating-app] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/sekigae_db?useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=UTF-8&serverTimezone=Asia/Tokyo'
+2025-07-25T14:59:38.022+09:00  INFO 48258 --- [seating-app] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-25T14:59:38.041+09:00  INFO 48258 --- [seating-app] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2025-07-25T14:59:38.054+09:00  INFO 48258 --- [seating-app] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-25T14:59:38.135+09:00  INFO 48258 --- [seating-app] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-25T14:59:38.159+09:00  WARN 48258 --- [seating-app] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-25T14:59:38.159+09:00  WARN 48258 --- [seating-app] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-07-25T14:59:38.429+09:00  INFO 48258 --- [seating-app] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-25T14:59:38.445+09:00  INFO 48258 --- [seating-app] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-25T14:59:38.670+09:00  WARN 48258 --- [seating-app] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-25T14:59:38.961+09:00  INFO 48258 --- [seating-app] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-07-25T14:59:38.966+09:00  INFO 48258 --- [seating-app] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2025-07-25T14:59:39.007+09:00  INFO 48258 --- [seating-app] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2025-07-25T14:59:39.019+09:00  INFO 48258 --- [seating-app] [restartedMain] sekigae.sekigae.SekigaeApplication       : Started SekigaeApplication in 2.094 seconds (process running for 2.27)
+2025-07-25T14:59:42.404+09:00  INFO 48258 --- [seating-app] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-07-25T14:59:42.404+09:00  INFO 48258 --- [seating-app] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-07-25T14:59:42.405+09:00  INFO 48258 --- [seating-app] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2025-07-25T15:00:18.079+09:00  INFO 48258 --- [seating-app] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-25T15:00:18.081+09:00  INFO 48258 --- [seating-app] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-07-25T15:00:18.086+09:00  INFO 48258 --- [seating-app] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-07-25T15:07:05.249+09:00  INFO 48346 --- [seating-app] [restartedMain] sekigae.sekigae.SekigaeApplication       : Starting SekigaeApplication using Java 23.0.2 with PID 48346 (/Users/okumurakiyoshikou/IdeaProjects/sekigae/build/classes/java/main started by okumurakiyoshikou in /Users/okumurakiyoshikou/IdeaProjects/sekigae)
+2025-07-25T15:07:05.250+09:00  INFO 48346 --- [seating-app] [restartedMain] sekigae.sekigae.SekigaeApplication       : The following 1 profile is active: "development"
+2025-07-25T15:07:05.274+09:00  INFO 48346 --- [seating-app] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-07-25T15:07:05.274+09:00  INFO 48346 --- [seating-app] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-07-25T15:07:05.504+09:00  INFO 48346 --- [seating-app] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-25T15:07:05.519+09:00  INFO 48346 --- [seating-app] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 1 JPA repository interface.
+2025-07-25T15:07:05.957+09:00  INFO 48346 --- [seating-app] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-25T15:07:05.960+09:00  INFO 48346 --- [seating-app] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-25T15:07:05.960+09:00  INFO 48346 --- [seating-app] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2025-07-25T15:07:05.977+09:00  INFO 48346 --- [seating-app] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-07-25T15:07:05.977+09:00  INFO 48346 --- [seating-app] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 703 ms
+2025-07-25T15:07:06.044+09:00  INFO 48346 --- [seating-app] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-07-25T15:07:06.105+09:00  INFO 48346 --- [seating-app] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6ee79349
+2025-07-25T15:07:06.106+09:00  INFO 48346 --- [seating-app] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-07-25T15:07:06.111+09:00  INFO 48346 --- [seating-app] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/sekigae_db?useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=UTF-8&serverTimezone=Asia/Tokyo'
+2025-07-25T15:07:06.195+09:00  INFO 48346 --- [seating-app] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-25T15:07:06.215+09:00  INFO 48346 --- [seating-app] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2025-07-25T15:07:06.228+09:00  INFO 48346 --- [seating-app] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-25T15:07:06.308+09:00  INFO 48346 --- [seating-app] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-25T15:07:06.330+09:00  WARN 48346 --- [seating-app] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-25T15:07:06.330+09:00  WARN 48346 --- [seating-app] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-07-25T15:07:06.586+09:00  INFO 48346 --- [seating-app] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-25T15:07:06.601+09:00  INFO 48346 --- [seating-app] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-25T15:07:06.809+09:00  WARN 48346 --- [seating-app] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-25T15:07:07.083+09:00  INFO 48346 --- [seating-app] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-07-25T15:07:07.094+09:00  INFO 48346 --- [seating-app] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2025-07-25T15:07:07.129+09:00  INFO 48346 --- [seating-app] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2025-07-25T15:07:07.139+09:00  INFO 48346 --- [seating-app] [restartedMain] sekigae.sekigae.SekigaeApplication       : Started SekigaeApplication in 2.035 seconds (process running for 2.216)
+2025-07-25T15:07:09.188+09:00  INFO 48346 --- [seating-app] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-07-25T15:07:09.188+09:00  INFO 48346 --- [seating-app] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-07-25T15:07:09.189+09:00  INFO 48346 --- [seating-app] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-07-25T15:13:20.024+09:00  INFO 48346 --- [seating-app] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-25T15:13:20.026+09:00  INFO 48346 --- [seating-app] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-07-25T15:13:20.030+09:00  INFO 48346 --- [seating-app] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-07-25T15:13:22.613+09:00  INFO 48385 --- [seating-app] [restartedMain] sekigae.sekigae.SekigaeApplication       : Starting SekigaeApplication using Java 23.0.2 with PID 48385 (/Users/okumurakiyoshikou/IdeaProjects/sekigae/build/classes/java/main started by okumurakiyoshikou in /Users/okumurakiyoshikou/IdeaProjects/sekigae)
+2025-07-25T15:13:22.614+09:00  INFO 48385 --- [seating-app] [restartedMain] sekigae.sekigae.SekigaeApplication       : The following 1 profile is active: "development"
+2025-07-25T15:13:22.641+09:00  INFO 48385 --- [seating-app] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-07-25T15:13:22.641+09:00  INFO 48385 --- [seating-app] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-07-25T15:13:22.883+09:00  INFO 48385 --- [seating-app] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-25T15:13:22.898+09:00  INFO 48385 --- [seating-app] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 1 JPA repository interface.
+2025-07-25T15:13:23.357+09:00  INFO 48385 --- [seating-app] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-25T15:13:23.361+09:00  INFO 48385 --- [seating-app] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-25T15:13:23.361+09:00  INFO 48385 --- [seating-app] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2025-07-25T15:13:23.376+09:00  INFO 48385 --- [seating-app] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-07-25T15:13:23.377+09:00  INFO 48385 --- [seating-app] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 736 ms
+2025-07-25T15:13:23.440+09:00  INFO 48385 --- [seating-app] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-07-25T15:13:23.500+09:00  INFO 48385 --- [seating-app] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@ee350ec
+2025-07-25T15:13:23.501+09:00  INFO 48385 --- [seating-app] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-07-25T15:13:23.505+09:00  INFO 48385 --- [seating-app] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/sekigae_db?useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=UTF-8&serverTimezone=Asia/Tokyo'
+2025-07-25T15:13:23.590+09:00  INFO 48385 --- [seating-app] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-25T15:13:23.605+09:00  INFO 48385 --- [seating-app] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2025-07-25T15:13:23.616+09:00  INFO 48385 --- [seating-app] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-25T15:13:23.697+09:00  INFO 48385 --- [seating-app] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-25T15:13:23.719+09:00  WARN 48385 --- [seating-app] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-25T15:13:23.719+09:00  WARN 48385 --- [seating-app] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-07-25T15:13:23.975+09:00  INFO 48385 --- [seating-app] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-25T15:13:23.990+09:00  INFO 48385 --- [seating-app] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-25T15:13:24.210+09:00  WARN 48385 --- [seating-app] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-25T15:13:24.492+09:00  INFO 48385 --- [seating-app] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-07-25T15:13:24.497+09:00  INFO 48385 --- [seating-app] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2025-07-25T15:13:24.540+09:00  INFO 48385 --- [seating-app] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2025-07-25T15:13:24.551+09:00  INFO 48385 --- [seating-app] [restartedMain] sekigae.sekigae.SekigaeApplication       : Started SekigaeApplication in 2.086 seconds (process running for 2.251)
+2025-07-25T15:13:26.522+09:00  INFO 48385 --- [seating-app] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-07-25T15:13:26.522+09:00  INFO 48385 --- [seating-app] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-07-25T15:13:26.523+09:00  INFO 48385 --- [seating-app] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2025-07-25T15:16:28.855+09:00  INFO 48385 --- [seating-app] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-25T15:16:28.858+09:00  INFO 48385 --- [seating-app] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-07-25T15:16:28.864+09:00  INFO 48385 --- [seating-app] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-07-25T15:16:31.916+09:00  INFO 48400 --- [seating-app] [restartedMain] sekigae.sekigae.SekigaeApplication       : Starting SekigaeApplication using Java 23.0.2 with PID 48400 (/Users/okumurakiyoshikou/IdeaProjects/sekigae/build/classes/java/main started by okumurakiyoshikou in /Users/okumurakiyoshikou/IdeaProjects/sekigae)
+2025-07-25T15:16:31.917+09:00  INFO 48400 --- [seating-app] [restartedMain] sekigae.sekigae.SekigaeApplication       : The following 1 profile is active: "development"
+2025-07-25T15:16:31.942+09:00  INFO 48400 --- [seating-app] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-07-25T15:16:31.942+09:00  INFO 48400 --- [seating-app] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-07-25T15:16:32.193+09:00  INFO 48400 --- [seating-app] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-25T15:16:32.208+09:00  INFO 48400 --- [seating-app] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 1 JPA repository interface.
+2025-07-25T15:16:32.652+09:00  INFO 48400 --- [seating-app] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-25T15:16:32.656+09:00  INFO 48400 --- [seating-app] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-25T15:16:32.656+09:00  INFO 48400 --- [seating-app] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2025-07-25T15:16:32.672+09:00  INFO 48400 --- [seating-app] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-07-25T15:16:32.672+09:00  INFO 48400 --- [seating-app] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 729 ms
+2025-07-25T15:16:32.745+09:00  INFO 48400 --- [seating-app] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-07-25T15:16:32.812+09:00  INFO 48400 --- [seating-app] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@ee350ec
+2025-07-25T15:16:32.813+09:00  INFO 48400 --- [seating-app] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-07-25T15:16:32.818+09:00  INFO 48400 --- [seating-app] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/sekigae_db?useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=UTF-8&serverTimezone=Asia/Tokyo'
+2025-07-25T15:16:32.904+09:00  INFO 48400 --- [seating-app] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-25T15:16:32.924+09:00  INFO 48400 --- [seating-app] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2025-07-25T15:16:32.935+09:00  INFO 48400 --- [seating-app] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-25T15:16:33.025+09:00  INFO 48400 --- [seating-app] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-25T15:16:33.047+09:00  WARN 48400 --- [seating-app] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-25T15:16:33.048+09:00  WARN 48400 --- [seating-app] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-07-25T15:16:33.290+09:00  INFO 48400 --- [seating-app] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-25T15:16:33.306+09:00  INFO 48400 --- [seating-app] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-25T15:16:33.526+09:00  WARN 48400 --- [seating-app] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-25T15:16:33.796+09:00  INFO 48400 --- [seating-app] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-07-25T15:16:33.804+09:00  INFO 48400 --- [seating-app] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2025-07-25T15:16:33.848+09:00  INFO 48400 --- [seating-app] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2025-07-25T15:16:33.861+09:00  INFO 48400 --- [seating-app] [restartedMain] sekigae.sekigae.SekigaeApplication       : Started SekigaeApplication in 2.095 seconds (process running for 2.268)
+2025-07-25T15:16:36.280+09:00  INFO 48400 --- [seating-app] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-07-25T15:16:36.280+09:00  INFO 48400 --- [seating-app] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-07-25T15:16:36.280+09:00  INFO 48400 --- [seating-app] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2025-07-25T15:18:19.871+09:00  INFO 48400 --- [seating-app] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-25T15:18:19.874+09:00  INFO 48400 --- [seating-app] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-07-25T15:18:19.880+09:00  INFO 48400 --- [seating-app] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-07-25T15:18:27.874+09:00  INFO 48549 --- [seating-app] [restartedMain] sekigae.sekigae.SekigaeApplication       : Starting SekigaeApplication using Java 23.0.2 with PID 48549 (/Users/okumurakiyoshikou/IdeaProjects/sekigae/build/classes/java/main started by okumurakiyoshikou in /Users/okumurakiyoshikou/IdeaProjects/sekigae)
+2025-07-25T15:18:27.875+09:00  INFO 48549 --- [seating-app] [restartedMain] sekigae.sekigae.SekigaeApplication       : The following 1 profile is active: "development"
+2025-07-25T15:18:27.901+09:00  INFO 48549 --- [seating-app] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-07-25T15:18:27.901+09:00  INFO 48549 --- [seating-app] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-07-25T15:18:28.131+09:00  INFO 48549 --- [seating-app] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-25T15:18:28.145+09:00  INFO 48549 --- [seating-app] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 1 JPA repository interface.
+2025-07-25T15:18:28.575+09:00  INFO 48549 --- [seating-app] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-25T15:18:28.578+09:00  INFO 48549 --- [seating-app] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-25T15:18:28.579+09:00  INFO 48549 --- [seating-app] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2025-07-25T15:18:28.595+09:00  INFO 48549 --- [seating-app] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-07-25T15:18:28.596+09:00  INFO 48549 --- [seating-app] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 695 ms
+2025-07-25T15:18:28.657+09:00  INFO 48549 --- [seating-app] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-07-25T15:18:28.728+09:00  INFO 48549 --- [seating-app] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@ee350ec
+2025-07-25T15:18:28.729+09:00  INFO 48549 --- [seating-app] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-07-25T15:18:28.734+09:00  INFO 48549 --- [seating-app] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/sekigae_db?useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=UTF-8&serverTimezone=Asia/Tokyo'
+2025-07-25T15:18:28.819+09:00  INFO 48549 --- [seating-app] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-25T15:18:28.836+09:00  INFO 48549 --- [seating-app] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2025-07-25T15:18:28.846+09:00  INFO 48549 --- [seating-app] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-25T15:18:28.923+09:00  INFO 48549 --- [seating-app] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-25T15:18:28.947+09:00  WARN 48549 --- [seating-app] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-25T15:18:28.948+09:00  WARN 48549 --- [seating-app] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-07-25T15:18:29.199+09:00  INFO 48549 --- [seating-app] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-25T15:18:29.214+09:00  INFO 48549 --- [seating-app] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-25T15:18:29.423+09:00  WARN 48549 --- [seating-app] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-25T15:18:29.698+09:00  INFO 48549 --- [seating-app] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-07-25T15:18:29.703+09:00  INFO 48549 --- [seating-app] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2025-07-25T15:18:29.738+09:00  INFO 48549 --- [seating-app] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2025-07-25T15:18:29.748+09:00  INFO 48549 --- [seating-app] [restartedMain] sekigae.sekigae.SekigaeApplication       : Started SekigaeApplication in 2.017 seconds (process running for 2.182)
+2025-07-25T15:18:31.901+09:00  INFO 48549 --- [seating-app] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-07-25T15:18:31.901+09:00  INFO 48549 --- [seating-app] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-07-25T15:18:31.902+09:00  INFO 48549 --- [seating-app] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms

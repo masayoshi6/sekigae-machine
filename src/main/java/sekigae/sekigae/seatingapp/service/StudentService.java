@@ -44,7 +44,7 @@ public class StudentService {
   }
 
   /**
-   * 指定IDの生徒を取得する（見つからなければnull）
+   * 指定IDの生徒を取得する（見つからなければnullを返す）
    */
   public Student getStudentById(Long id) {
     Optional<Student> student = studentRepository.findById(id);
@@ -71,6 +71,11 @@ public class StudentService {
     return null;
   }
 
+  /**
+   * 生徒情報の削除
+   *
+   * @param id 学籍番号
+   */
   public void deleteStudent(Long id) {
     studentRepository.deleteById(id);
   }
