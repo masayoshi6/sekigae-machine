@@ -16,4 +16,7 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
 
   // 座席位置で検索（ユニークな生徒を探す）
   Student findBySeatRowAndSeatColumn(Integer seatRow, Integer seatColumn);
+
+  void deleteById(Integer id);
+
 }

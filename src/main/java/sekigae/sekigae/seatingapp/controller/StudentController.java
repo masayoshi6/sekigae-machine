@@ -80,4 +80,15 @@ public class StudentController {
       return ResponseEntity.notFound().build();
     }
   }
+
+
+  /**
+   * 生徒を削除する（修正版）
+   */
+  @PostMapping("/delete/{id}")
+  public String deleteStudent(@PathVariable Long id) {
+    studentService.deleteStudent(id);
+    return "redirect:/students";
+  }
+
 }

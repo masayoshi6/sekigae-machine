@@ -70,4 +70,9 @@ public class StudentService {
     }
     return null;
   }
+
+  public void deleteStudent(Long id) {
+    studentRepository.deleteById(id);
+  }
+
 }
