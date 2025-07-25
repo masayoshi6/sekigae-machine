@@ -4,8 +4,30 @@
   <meta charset="UTF-8">
   <title>生徒一覧 - 席替えアプリ</title>
   <link rel="stylesheet" th:href="@{/css/style.css}">
+  <style>
+    .nav-links {
+        margin-bottom: 20px;
+    }
+
+    .nav-links a {
+        color: #333;
+        text-decoration: none;
+        margin-right: 15px;
+        font-size: 16px;
+    }
+
+    .nav-links a:hover {
+        text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
+<div class="nav-links">
+  <a th:href="@{/seating}">🪑 座席表に戻る</a>
+  <a th:href="@{/students/new}">➕ 生徒追加</a>
+  <a th:href="@{/}">🏠 ホーム</a>
+</div>
+
 <h1>📋 生徒一覧</h1>
 
 <table border="1" cellpadding="8" cellspacing="0">
@@ -15,6 +37,7 @@
     <th>名前</th>
     <th>性別</th>
     <th>座席位置</th>
+    <th>操作</th>
   </tr>
   </thead>
   <tbody>
@@ -23,6 +46,12 @@
     <td th:text="${student.name}">山田太郎</td>
     <td th:text="${student.gender}">男子</td>
     <td th:text="'列: ' + ${student.seatColumn} + ' ／ 行: ' + ${student.seatRow}">1列2行</td>
+    <td>
+      <form th:action="@{/students/delete/{id}(id=${student.id})}" method="post"
+            onsubmit="return confirm('本当に削除しますか？');">
+        <button type="submit">削除</button>
+      </form>
+    </td>
   </tr>
   </tbody>
 </table>

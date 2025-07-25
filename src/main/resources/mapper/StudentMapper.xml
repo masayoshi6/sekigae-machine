@@ -1,0 +1,3 @@
+<delete id="deleteById" parameterType="int">
+  DELETE FROM students WHERE id = #{id}
+</delete>
