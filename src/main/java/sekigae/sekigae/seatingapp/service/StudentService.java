@@ -1,6 +1,7 @@
 package sekigae.sekigae.seatingapp.service;
 
 import jakarta.transaction.Transactional;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
@@ -78,6 +79,24 @@ public class StudentService {
    */
   public void deleteStudent(Long id) {
     studentRepository.deleteById(id);
+  }
+
+  public Student[][] shuffleSeatingChart(int rows, int columns) {
+    List<Student> allStudents = studentRepository.findAll();
+    Collections.shuffle(allStudents); // ← ランダムに並び替え
+
+    Student[][] chart = new Student[rows][columns];
+    int index = 0;
+
+    for (int r = 0; r < rows; r++) {
+      for (int c = 0; c < columns; c++) {
+        if (index < allStudents.size()) {
+          chart[r][c] = allStudents.get(index++);
+        }
+      }
+    }
+
+    return chart;
   }
 
 }

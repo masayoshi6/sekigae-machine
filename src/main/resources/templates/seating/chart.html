@@ -162,11 +162,12 @@
       <th:block th:each="row, rowStat : ${seatingChart}">
         <th:block th:each="seat, colStat : ${row}">
           <div class="seat"
-               th:classappend="${seat != null} ? 'occupied' : ''"
+               th:classappend="${seat != null} ? (${seat.gender} == '男' ? ' male' : ' female') : ''"
                th:data-row="${rowStat.index + 1}"
                th:data-col="${colStat.index + 1}">
-            <span th:text="${seat != null} ? ${seat} : ''"></span>
+            <span th:text="${seat != null} ? ${seat.name} : ''"></span>
           </div>
+
         </th:block>
       </th:block>
     </div>
@@ -205,6 +206,9 @@
       <button class="button" onclick="saveConfiguration()" style="background-color: #666;">
         ✏️ 座席の詳細を保存
       </button>
+      
+      <button type="button" onclick="shuffleSeats()">座席をシャッフル</button>
+
     </div>
   </div>
 </div>
@@ -238,5 +242,29 @@
       });
   });
 </script>
+
+<script>
+  function shuffleSeats() {
+      if (confirm('座席をシャッフルしますか？')) {
+          const form = document.createElement('form');
+          form.method = 'POST';
+          form.action = '/seating/shuffle';
+
+          const rowsInput = document.createElement('input');
+          rowsInput.name = 'rows';
+          rowsInput.value = 6;
+          form.appendChild(rowsInput);
+
+          const colsInput = document.createElement('input');
+          colsInput.name = 'columns';
+          colsInput.value = 5;
+          form.appendChild(colsInput);
+
+          document.body.appendChild(form);
+          form.submit();
+      }
+  }
+</script>
+
 </body>
 </html>
