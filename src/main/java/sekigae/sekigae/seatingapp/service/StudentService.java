@@ -81,6 +81,13 @@ public class StudentService {
     studentRepository.deleteById(id);
   }
 
+  /**
+   * 生徒の座席をシャッフルします
+   *
+   * @param rows    座席の行数
+   * @param columns 座席の列数
+   * @return シャッフル後の座席配置
+   */
   public Student[][] shuffleSeatingChart(int rows, int columns) {
     List<Student> allStudents = studentRepository.findAll();
     Collections.shuffle(allStudents); // ← ランダムに並び替え

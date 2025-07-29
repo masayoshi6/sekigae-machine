@@ -11,7 +11,6 @@ import sekigae.sekigae.seatingapp.repository.StudentRepository;
 @RequiredArgsConstructor
 public class SeatingService {
 
-  //あいうえお
   private final StudentService studentService;
   private final StudentRepository studentRepository;
 
