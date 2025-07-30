@@ -63,7 +63,13 @@ public class StudentController {
       return "students/create";
     }
 
-    studentService.registerStudent(student);
+    try {
+      studentService.registerStudent(student);
+    } catch (IllegalArgumentException e) {
+      model.addAttribute("seatError", e.getMessage());
+      return "students/create";
+    }
+    
     return "redirect:/students";
   }
 

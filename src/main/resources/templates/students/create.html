@@ -137,6 +137,8 @@
     <div class="error" th:if="${#fields.hasErrors('seatColumn')}" th:errors="*{seatColumn}">
       座席列エラー
     </div>
+    <div class="error" th:if="${seatError}" th:text="${seatError}"></div>
+
 
     <button type="submit">✅ 登録する</button>
     <a th:href="@{/students}" class="back-link">← 一覧に戻る</a>
