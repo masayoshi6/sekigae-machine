@@ -1,5 +1,6 @@
 package sekigae.sekigae.seatingapp.controller;
 
+import jakarta.validation.Valid;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import sekigae.sekigae.seatingapp.service.StudentService;
  * <p>
  * 現在の座席情報、生徒一覧画面への遷移、新規生徒情報の登録画面への遷移、座席設定への遷移などを担当します。
  */
+@Valid
 @Controller
 @RequiredArgsConstructor
 public class HomeController {

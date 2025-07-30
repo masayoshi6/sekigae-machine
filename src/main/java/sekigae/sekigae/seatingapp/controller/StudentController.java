@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import sekigae.sekigae.seatingapp.entity.Student;
 import sekigae.sekigae.seatingapp.service.StudentService;
 
+@Valid
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/students")
@@ -65,18 +66,6 @@ public class StudentController {
     studentService.registerStudent(student);
     return "redirect:/students";
   }
-
-  /*@PostMapping
-  public String registerStudent(@Valid @ModelAttribute Student student,
-      BindingResult bindingResult,
-      Model model) {
-    if (bindingResult.hasErrors()) {
-      return "students/create";
-    }
-
-    studentService.registerStudent(student);
-    return "redirect:/students";
-  }*/
 
   /**
    * REST API: 生徒一覧をJSONで取得

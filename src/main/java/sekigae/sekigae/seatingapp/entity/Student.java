@@ -10,6 +10,7 @@ import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -37,7 +38,8 @@ public class Student {
   @Column(nullable = false)
   private String gender;
 
-  @NotBlank(message = "学籍番号を入力してください")
+  @NotBlank(message = "学籍番号は必須です")
+  @Pattern(regexp = "^[1-9][0-9]*$", message = "学籍番号は半角の自然数を入力してください")
   @Column(unique = true)
   private String studentCode;
 

@@ -30,6 +30,28 @@
         cursor: pointer;
         }
 
+    /* テーブルのセルを中央寄せにする */
+  table td, table th {
+    text-align: center;
+    vertical-align: middle;
+  }
+
+    table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+
+table thead th {
+  background-color: #e8f5e9;
+  font-weight: bold;
+  border-bottom: 2px solid #999;
+}
+
   </style>
 </head>
 <body>
@@ -44,20 +66,20 @@
 <table border="1" cellpadding="8" cellspacing="0">
   <thead>
   <tr>
-    <th>ID</th>
+    <!-- <th>ID</th> -->
     <th>名前</th>
-    <th>性別</th>
     <th>学籍番号</th>
+    <th>性別</th>
     <th>座席位置</th>
     <th>操作</th>
   </tr>
   </thead>
   <tbody>
   <tr th:each="student : ${students}">
-    <td th:text="${student.id}">1</td>
+   <!-- <td th:text="${student.id}">1</td> -->
     <td th:text="${student.name}">山田太郎</td>
-    <td th:text="${student.gender}">男子</td>
     <td th:text="${student.studentCode}">7</td>
+    <td th:text="${student.gender}">男子</td>
     <td th:text="'行: ' + ${student.seatRow} + ' ／ 列: ' + ${student.seatColumn}">1行2列</td>
     <td>
        <form th:action="@{/students/delete/{id}(id=${student.id})}" method="post"
