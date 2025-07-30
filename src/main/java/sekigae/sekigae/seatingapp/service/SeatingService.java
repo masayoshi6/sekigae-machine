@@ -99,7 +99,13 @@ public class SeatingService {
     saveSeatingConfiguration(rows, columns);
   }
 
-  // 新しい性別付き座席表メソッド
+  /**
+   * 現在の座席をシャッフルするためのメソッドです
+   *
+   * @param rows    現在の座席の行数
+   * @param columns 現在の座席の列数
+   * @return 新しい座席配置（２次元配列として受け取ります。）
+   */
   public Student[][] getSeatingChartWithGender(int rows, int columns) {
     // 全生徒を取得
     List<Student> allStudents = studentService.getAllStudents();
