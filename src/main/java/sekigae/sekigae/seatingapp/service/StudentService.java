@@ -41,6 +41,14 @@ public class StudentService {
    * 生徒を新規登録する
    */
   public Student registerStudent(Student student) {
+
+    // 同じ座席の生徒がいるかチェック
+    Student existing = studentRepository.findBySeatRowAndSeatColumn(
+        student.getSeatRow(), student.getSeatColumn());
+    if (existing != null) {
+      throw new IllegalArgumentException("指定された座席にはすでに他の生徒が登録されています。");
+    }
+
     return studentRepository.save(student);
   }
 
