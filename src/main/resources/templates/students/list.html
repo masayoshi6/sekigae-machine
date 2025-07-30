@@ -47,6 +47,7 @@
     <th>ID</th>
     <th>名前</th>
     <th>性別</th>
+    <th>学籍番号</th>
     <th>座席位置</th>
     <th>操作</th>
   </tr>
@@ -56,6 +57,7 @@
     <td th:text="${student.id}">1</td>
     <td th:text="${student.name}">山田太郎</td>
     <td th:text="${student.gender}">男子</td>
+    <td th:text="${student.studentCode}">7</td>
     <td th:text="'行: ' + ${student.seatRow} + ' ／ 列: ' + ${student.seatColumn}">1行2列</td>
     <td>
        <form th:action="@{/students/delete/{id}(id=${student.id})}" method="post"
