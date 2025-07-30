@@ -16,20 +16,6 @@ public class HomeController {
   private final StudentService studentService;
   private final SeatingService seatingService;
 
-
-  /*@GetMapping("/")
-  public String home(Model model) {
-    // 統計情報を追加
-    List<Student> students = studentService.getAllStudents();
-    model.addAttribute("studentCount", students.size());
-    model.addAttribute("occupiedSeats", students.size());
-
-    return "home/dashboard"; // templates/home/dashboard.html を返す
-  }
-  //return "redirect:/seating"; // 座席表を最初に表示
-  //return "redirect:/students";*/
-
-
   @GetMapping("/")
   public String home(Model model) {
     // 学生データを取得

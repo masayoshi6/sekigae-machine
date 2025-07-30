@@ -101,7 +101,6 @@ public class SeatingController {
       @RequestParam("columns") int columns,
       Model model) {
     // 座席表を再生成（シャッフルなど）
-    //seatingService.regenerateSeatingChart(rows, columns);
     return showSeatingChartWithSize(rows, columns, model);
   }
 
