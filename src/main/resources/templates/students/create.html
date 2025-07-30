@@ -4,7 +4,97 @@
   <meta charset="UTF-8">
   <title>生徒の新規登録</title>
   <style>
-    .error { color: red; }
+    body {
+      background: linear-gradient(to right, #e0f7fa, #fce4ec);
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 40px;
+    }
+
+    .nav-links {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .nav-links a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #0077cc;
+      font-weight: bold;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background: #ffffff;
+      max-width: 550px;
+      margin: 0 auto;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    label {
+      display: block;
+      margin-top: 20px;
+      font-weight: bold;
+      color: #555;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+      margin-top: 5px;
+      padding: 10px;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-sizing: border-box;
+      font-size: 1em;
+    }
+
+    .radio-group {
+      display: flex;
+      gap: 15px;
+      margin-top: 5px;
+    }
+
+    .error {
+      color: #d32f2f;
+      font-size: 0.9em;
+      margin-top: 5px;
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 12px 20px;
+      background: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1em;
+      width: 100%;
+    }
+
+    button:hover {
+      background: #43a047;
+    }
+
+    .back-link {
+      display: block;
+      text-align: center;
+      margin-top: 15px;
+      color: #777;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -15,55 +105,43 @@
   <a th:href="@{/}">🏠 ホーム</a>
 </div>
 
-<h1>生徒の新規登録</h1>
+<h1>🎓 生徒の新規登録</h1>
 
-<form th:action="@{/students}" th:object="${student}" method="post">
+<div class="card">
+  <form th:action="@{/students}" th:object="${student}" method="post">
 
-  <!-- 名前 -->
-  <div>
     <label for="name">名前：</label>
     <input type="text" id="name" th:field="*{name}">
     <div class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">名前エラー</div>
-  </div>
 
-  <!-- 性別（ラジオボタン） -->
-  <div>
     <label>性別：</label>
-    <label><input type="radio" th:field="*{gender}" value="男子">男子</label>
-    <label><input type="radio" th:field="*{gender}" value="女子">女子</label>
+    <div class="radio-group">
+      <label><input type="radio" th:field="*{gender}" value="男子"> 男子</label>
+      <label><input type="radio" th:field="*{gender}" value="女子"> 女子</label>
+    </div>
     <div class="error" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}">性別エラー</div>
-  </div>
 
-  <!-- 学籍番号 -->
-  <div>
     <label for="studentCode">学籍番号：</label>
     <input type="text" id="studentCode" th:field="*{studentCode}">
     <div class="error" th:if="${#fields.hasErrors('studentCode')}" th:errors="*{studentCode}">
       学籍番号エラー
     </div>
-  </div>
 
-  <!-- 座席位置 -->
-  <div>
     <label for="seatRow">座席（行）：</label>
     <input type="number" id="seatRow" th:field="*{seatRow}" min="1" max="6">
     <div class="error" th:if="${#fields.hasErrors('seatRow')}" th:errors="*{seatRow}">座席行エラー
     </div>
-  </div>
 
-  <div>
     <label for="seatColumn">座席（列）：</label>
     <input type="number" id="seatColumn" th:field="*{seatColumn}" min="1" max="5">
     <div class="error" th:if="${#fields.hasErrors('seatColumn')}" th:errors="*{seatColumn}">
       座席列エラー
     </div>
-  </div>
 
-  <div>
-    <button type="submit">登録</button>
-    <a th:href="@{/students}">一覧に戻る</a>
-  </div>
-</form>
+    <button type="submit">✅ 登録する</button>
+    <a th:href="@{/students}" class="back-link">← 一覧に戻る</a>
+  </form>
+</div>
 
 </body>
 </html>

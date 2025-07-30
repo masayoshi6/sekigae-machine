@@ -1,5 +1,6 @@
 package sekigae.sekigae.seatingapp.controller;
 
+import jakarta.validation.Valid;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import sekigae.sekigae.seatingapp.entity.Student;
 import sekigae.sekigae.seatingapp.service.SeatingService;
 import sekigae.sekigae.seatingapp.service.StudentService;
 
+@Valid
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/seating")
