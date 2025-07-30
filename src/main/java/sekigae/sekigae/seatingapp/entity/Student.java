@@ -6,8 +6,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -39,9 +41,13 @@ public class Student {
   @Column(unique = true)
   private String studentCode;
 
-  @Min(value = 1, message = "座席の行番号は1以上を入力してください")
+  @NotNull(message = "座席の行を入力してください")
+  @Min(value = 1, message = "座席（行）は1以上にしてください")
+  @Max(value = 6, message = "座席（行）は6以下にしてください")
   private Integer seatRow;
 
-  @Min(value = 1, message = "座席の列番号は1以上を入力してください")
+  @NotNull(message = "座席の列を入力してください")
+  @Min(value = 1, message = "座席（列）は1以上にしてください")
+  @Max(value = 5, message = "座席（列）は5以下にしてください")
   private Integer seatColumn;
 }
