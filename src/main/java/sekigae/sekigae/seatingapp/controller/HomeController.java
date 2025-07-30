@@ -9,6 +9,11 @@ import sekigae.sekigae.seatingapp.entity.Student;
 import sekigae.sekigae.seatingapp.service.SeatingService;
 import sekigae.sekigae.seatingapp.service.StudentService;
 
+/**
+ * 席替えアプリのホーム画面に関する情報を提供するコントローラーです。
+ * <p>
+ * 現在の座席情報、生徒一覧画面への遷移、新規生徒情報の登録画面への遷移、座席設定への遷移などを担当します。
+ */
 @Controller
 @RequiredArgsConstructor
 public class HomeController {
@@ -40,7 +45,10 @@ public class HomeController {
   }
 
   /**
-   * 使用中の座席数を計算
+   * 使用中の座席の数を計算するメソッドです。
+   *
+   * @param seatingChart 現在の座席配置（２次元配列として渡します。）
+   * @return 現在使用されている座席の数
    */
   private int calculateOccupiedSeats(String[][] seatingChart) {
     int count = 0;
