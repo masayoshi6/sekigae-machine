@@ -50,13 +50,33 @@ public class StudentController {
   public String registerStudent(@Valid @ModelAttribute Student student,
       BindingResult bindingResult,
       Model model) {
+
+    // 入力エラーがある場合
     if (bindingResult.hasErrors()) {
+      return "students/create";
+    }
+
+    // ✅ 学籍番号の重複チェックをここで追加！
+    if (studentService.isStudentCodeDuplicate(student.getStudentCode())) {
+      bindingResult.rejectValue("studentCode", "duplicate", "その学籍番号はすでに登録されています");
       return "students/create";
     }
 
     studentService.registerStudent(student);
     return "redirect:/students";
   }
+
+  /*@PostMapping
+  public String registerStudent(@Valid @ModelAttribute Student student,
+      BindingResult bindingResult,
+      Model model) {
+    if (bindingResult.hasErrors()) {
+      return "students/create";
+    }
+
+    studentService.registerStudent(student);
+    return "redirect:/students";
+  }*/
 
   /**
    * REST API: 生徒一覧をJSONで取得

@@ -106,4 +106,9 @@ public class StudentService {
     return chart;
   }
 
+
+  public boolean isStudentCodeDuplicate(String studentCode) {
+    return studentRepository.findByStudentCode(studentCode).isPresent();
+  }
+
 }

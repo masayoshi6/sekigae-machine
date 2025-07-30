@@ -1,11 +1,13 @@
 package sekigae.sekigae.seatingapp.repository;
 
 import java.util.List;
+import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import sekigae.sekigae.seatingapp.entity.Student;
 
 @Repository
+//@Mapper
 public interface StudentRepository extends JpaRepository<Student, Long> {
 
   // 名前で検索する（例：あいまい検索などに活用）
@@ -18,5 +20,8 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
   Student findBySeatRowAndSeatColumn(Integer seatRow, Integer seatColumn);
 
   void deleteById(Integer id);
+
+
+  Optional<Student> findByStudentCode(String studentCode);
 
 }

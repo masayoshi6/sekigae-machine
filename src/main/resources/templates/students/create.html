@@ -46,14 +46,14 @@
   <!-- 座席位置 -->
   <div>
     <label for="seatRow">座席（行）：</label>
-    <input type="number" id="seatRow" th:field="*{seatRow}" min="1">
+    <input type="number" id="seatRow" th:field="*{seatRow}" min="1" max="6">
     <div class="error" th:if="${#fields.hasErrors('seatRow')}" th:errors="*{seatRow}">座席行エラー
     </div>
   </div>
 
   <div>
     <label for="seatColumn">座席（列）：</label>
-    <input type="number" id="seatColumn" th:field="*{seatColumn}" min="1">
+    <input type="number" id="seatColumn" th:field="*{seatColumn}" min="1" max="5">
     <div class="error" th:if="${#fields.hasErrors('seatColumn')}" th:errors="*{seatColumn}">
       座席列エラー
     </div>
