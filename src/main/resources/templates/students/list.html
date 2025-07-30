@@ -19,6 +19,17 @@
     .nav-links a:hover {
         text-decoration: underline;
     }
+
+    /* 削除ボタンを危険な色にする */
+        button[type="submit"] {
+        background-color: #dc3545; /* 赤色 */
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        }
+
   </style>
 </head>
 <body>
@@ -45,11 +56,13 @@
     <td th:text="${student.id}">1</td>
     <td th:text="${student.name}">山田太郎</td>
     <td th:text="${student.gender}">男子</td>
-    <td th:text="'列: ' + ${student.seatColumn} + ' ／ 行: ' + ${student.seatRow}">1列2行</td>
+    <td th:text="'行: ' + ${student.seatRow} + ' ／ 列: ' + ${student.seatColumn}">1行2列</td>
     <td>
-      <form th:action="@{/students/delete/{id}(id=${student.id})}" method="post"
+       <form th:action="@{/students/delete/{id}(id=${student.id})}" method="post"
             onsubmit="return confirm('本当に削除しますか？');">
         <button type="submit">削除</button>
+      </form>
+
       </form>
     </td>
   </tr>
