@@ -177,19 +177,6 @@
     <p>教室の座席管理を簡単に！</p>
   </div>
 
-  <!-- 現在の設定情報 -->
-  <div class="current-settings">
-    <div class="settings-title">
-      ⚙️ 現在の座席表設定
-    </div>
-    <div class="settings-info">
-      <span class="setting-item" th:text="|${currentRows != null ? currentRows : 6}行|">6行</span>
-      <span class="setting-item"
-            th:text="|${currentColumns != null ? currentColumns : 5}列|">5列</span>
-      <span class="setting-item"
-            th:text="|総座席数: ${currentRows != null and currentColumns != null ? currentRows * currentColumns : 30}|">総座席数: 30</span>
-    </div>
-  </div>
 
   <div class="menu-grid">
     <a th:href="@{/seating}" class="menu-card seating">
@@ -198,11 +185,6 @@
       <div class="menu-description">現在の座席配置を確認・変更</div>
     </a>
 
-    <a th:href="@{/seating/setup}" class="menu-card setup">
-      <span class="menu-icon">📐</span>
-      <div class="menu-title">座席表設定</div>
-      <div class="menu-description">行数・列数を変更して新しい座席表を作成</div>
-    </a>
 
     <a th:href="@{/students}" class="menu-card students">
       <span class="menu-icon">📋</span>
