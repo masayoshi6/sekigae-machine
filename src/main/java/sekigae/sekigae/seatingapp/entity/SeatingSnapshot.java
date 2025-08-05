@@ -31,10 +31,10 @@ public class SeatingSnapshot {
   @Column(nullable = false)
   private String snapshotName;
 
-  @Column(nullable = false)
+  @Column(name = "`rows`", nullable = false)  // バッククォートで囲む
   private Integer rows;
 
-  @Column(nullable = false)
+  @Column(name = "`columns`", nullable = false)  // バッククォートで囲む
   private Integer columns;
 
   @Column(columnDefinition = "TEXT")

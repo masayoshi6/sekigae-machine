@@ -9,8 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import sekigae.sekigae.seatingapp.entity.SeatingSnapshot;
 import sekigae.sekigae.seatingapp.entity.Student;
 import sekigae.sekigae.seatingapp.service.SeatingService;
+import sekigae.sekigae.seatingapp.service.SeatingSnapshotService;
 import sekigae.sekigae.seatingapp.service.StudentService;
 
 @Valid
@@ -21,6 +24,7 @@ public class SeatingController {
 
   private final SeatingService seatingService;
   private final StudentService studentService;
+  private final SeatingSnapshotService snapshotService;
 
   /**
    * 座席表を表示する
@@ -37,10 +41,14 @@ public class SeatingController {
     // 全学生データ（必要なら他の用途用）
     List<Student> students = studentService.getAllStudents();
 
+    // 保存されたスナップショット一覧を取得
+    List<SeatingSnapshot> snapshots = snapshotService.getAllSnapshots();
+
     model.addAttribute("seatingChart", seatingChart);
     model.addAttribute("students", students);
     model.addAttribute("rows", rows);
     model.addAttribute("columns", columns);
+    model.addAttribute("snapshots", snapshots);
 
     return "seating/chart";
   }
@@ -86,10 +94,14 @@ public class SeatingController {
     // 学生データも追加
     List<Student> students = studentService.getAllStudents();
 
+    // 保存されたスナップショット一覧を取得
+    List<SeatingSnapshot> snapshots = snapshotService.getAllSnapshots();
+
     model.addAttribute("seatingChart", seatingChart);
     model.addAttribute("students", students);
     model.addAttribute("rows", rows);
     model.addAttribute("columns", columns);
+    model.addAttribute("snapshots", snapshots);
 
     return "seating/chart";
   }
@@ -129,11 +141,89 @@ public class SeatingController {
     // 学生データも追加（必要であれば）
     List<Student> students = studentService.getAllStudents();
 
+    // 保存されたスナップショット一覧を取得
+    List<SeatingSnapshot> snapshots = snapshotService.getAllSnapshots();
+
     model.addAttribute("seatingChart", seatingChart);
     model.addAttribute("students", students);
     model.addAttribute("rows", rows);
     model.addAttribute("columns", columns);
+    model.addAttribute("snapshots", snapshots);
 
     return "seating/chart";
+  }
+
+  /**
+   * 現在の座席配置を保存する
+   */
+  @PostMapping("/save")
+  public String saveSeatingConfiguration(
+      @RequestParam("rows") int rows,
+      @RequestParam("columns") int columns,
+      @RequestParam(value = "snapshotName", required = false) String snapshotName,
+      @RequestParam(value = "description", required = false) String description,
+      RedirectAttributes redirectAttributes) {
+
+    try {
+      SeatingSnapshot snapshot = snapshotService.saveCurrentSeatingSnapshot(rows, columns,
+          snapshotName, description);
+      redirectAttributes.addFlashAttribute("successMessage",
+          "座席配置「" + snapshot.getSnapshotName() + "」を保存しました。");
+    } catch (Exception e) {
+      redirectAttributes.addFlashAttribute("errorMessage",
+          "座席配置の保存に失敗しました。");
+    }
+
+    return "redirect:/seating";
+  }
+
+  /**
+   * 保存された座席配置を復元する
+   */
+  @PostMapping("/restore")
+  public String restoreSeatingConfiguration(
+      @RequestParam("snapshotId") Long snapshotId,
+      RedirectAttributes redirectAttributes) {
+
+    try {
+      boolean success = snapshotService.restoreSeatingSnapshot(snapshotId);
+      if (success) {
+        redirectAttributes.addFlashAttribute("successMessage",
+            "座席配置を復元しました。");
+      } else {
+        redirectAttributes.addFlashAttribute("errorMessage",
+            "座席配置の復元に失敗しました。");
+      }
+    } catch (Exception e) {
+      redirectAttributes.addFlashAttribute("errorMessage",
+          "座席配置の復元中にエラーが発生しました。");
+    }
+
+    return "redirect:/seating";
+  }
+
+  /**
+   * 保存された座席配置を削除する
+   */
+  @PostMapping("/delete-snapshot")
+  public String deleteSeatingSnapshot(
+      @RequestParam("snapshotId") Long snapshotId,
+      RedirectAttributes redirectAttributes) {
+
+    try {
+      boolean success = snapshotService.deleteSnapshot(snapshotId);
+      if (success) {
+        redirectAttributes.addFlashAttribute("successMessage",
+            "座席配置を削除しました。");
+      } else {
+        redirectAttributes.addFlashAttribute("errorMessage",
+            "座席配置の削除に失敗しました。");
+      }
+    } catch (Exception e) {
+      redirectAttributes.addFlashAttribute("errorMessage",
+          "座席配置の削除中にエラーが発生しました。");
+    }
+
+    return "redirect:/seating";
   }
 }

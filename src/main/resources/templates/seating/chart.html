@@ -13,7 +13,7 @@
     .container {
         display: flex;
         gap: 30px;
-        max-width: 1200px;
+        max-width: 1400px;
         margin: 0 auto;
     }
 
@@ -112,6 +112,30 @@
         background-color: #c2185b;
     }
 
+    .button.save {
+        background-color: #4caf50;
+    }
+
+    .button.save:hover {
+        background-color: #45a049;
+    }
+
+    .button.restore {
+        background-color: #2196f3;
+    }
+
+    .button.restore:hover {
+        background-color: #1976d2;
+    }
+
+    .button.delete {
+        background-color: #f44336;
+    }
+
+    .button.delete:hover {
+        background-color: #d32f2f;
+    }
+
     .nav-links {
         margin-bottom: 20px;
     }
@@ -153,6 +177,95 @@
     .constraint-options input[type="checkbox"] {
         margin-right: 8px;
     }
+
+    .snapshot-list {
+        max-height: 200px;
+        overflow-y: auto;
+        border: 1px solid #e0e0e0;
+        border-radius: 5px;
+        padding: 10px;
+    }
+
+    .snapshot-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px;
+        border-bottom: 1px solid #f0f0f0;
+        margin-bottom: 5px;
+    }
+
+    .snapshot-item:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+    }
+
+    .snapshot-info {
+        flex: 1;
+    }
+
+    .snapshot-name {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    .snapshot-date {
+        font-size: 12px;
+        color: #666;
+    }
+
+    .snapshot-actions {
+        display: flex;
+        gap: 5px;
+    }
+
+    .small-button {
+        padding: 4px 8px;
+        font-size: 12px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+    .message {
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 15px;
+    }
+
+    .success-message {
+        background-color: #d4edda;
+        border: 1px solid #c3e6cb;
+        color: #155724;
+    }
+
+    .error-message {
+        background-color: #f8d7da;
+        border: 1px solid #f5c6cb;
+        color: #721c24;
+    }
+
+    .save-form {
+        margin-bottom: 10px;
+    }
+
+    .save-form input[type="text"] {
+        padding: 5px;
+        margin: 5px;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        width: 200px;
+    }
+
+    .save-form textarea {
+        padding: 5px;
+        margin: 5px;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        width: 200px;
+        height: 40px;
+        resize: vertical;
+    }
   </style>
 </head>
 <body>
@@ -164,6 +277,10 @@
 </div>
 
 <h1>🪑 席替えアプリケーション</h1>
+
+<!-- メッセージ表示 -->
+<div th:if="${successMessage}" class="message success-message" th:text="${successMessage}"></div>
+<div th:if="${errorMessage}" class="message error-message" th:text="${errorMessage}"></div>
 
 <div class="container">
   <!-- 座席表エリア -->
@@ -229,21 +346,74 @@
 
       <div class="control-section">
         <button type="submit" class="button">🔄 座替え</button>
-        <button type="button" class="button" onclick="saveConfiguration()"
-                style="background-color: #666;">
-          ✏️ 座席の詳細を保存
-        </button>
       </div>
     </form>
+
+    <!-- 座席保存フォーム -->
+    <div class="control-section">
+      <div class="control-title">💾 座席配置を保存</div>
+      <form class="save-form" method="post" action="/seating/save">
+        <input type="hidden" name="rows" th:value="${rows != null ? rows : 6}">
+        <input type="hidden" name="columns" th:value="${columns != null ? columns : 5}">
+
+        <div>
+          <input type="text" name="snapshotName" placeholder="保存名（省略可）" maxlength="100">
+        </div>
+        <div>
+          <textarea name="description" placeholder="説明（省略可）" maxlength="255"></textarea>
+        </div>
+        <button type="submit" class="button save">💾 現在の座席を保存</button>
+      </form>
+    </div>
+
+    <!-- 保存された座席配置一覧 -->
+    <div class="control-section" th:if="${snapshots != null and !snapshots.isEmpty()}">
+      <div class="control-title">📁 保存された座席配置</div>
+      <div class="snapshot-list">
+        <div class="snapshot-item" th:each="snapshot : ${snapshots}">
+          <div class="snapshot-info">
+            <div class="snapshot-name" th:text="${snapshot.snapshotName}">座席配置名</div>
+            <div class="snapshot-date"
+                 th:text="${#temporals.format(snapshot.createdAt, 'yyyy-MM-dd HH:mm')}">
+              2024-01-01 12:00
+            </div>
+            <div class="snapshot-date"
+                 th:if="${snapshot.description != null and !snapshot.description.isEmpty()}"
+                 th:text="'説明: ' + ${snapshot.description}">
+              説明文
+            </div>
+          </div>
+          <div class="snapshot-actions">
+            <!-- 復元ボタン -->
+            <form method="post" action="/seating/restore" style="display: inline;">
+              <input type="hidden" name="snapshotId" th:value="${snapshot.id}">
+              <button type="submit" class="small-button restore"
+                      onclick="return confirm('この座席配置を復元しますか？現在の配置は失われます。')">
+                復元
+              </button>
+            </form>
+            <!-- 削除ボタン -->
+            <form method="post" action="/seating/delete-snapshot" style="display: inline;">
+              <input type="hidden" name="snapshotId" th:value="${snapshot.id}">
+              <button type="submit" class="small-button delete"
+                      onclick="return confirm('この保存データを削除しますか？')">
+                削除
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 保存データがない場合のメッセージ -->
+    <div class="control-section" th:if="${snapshots == null or snapshots.isEmpty()}">
+      <div class="control-title">📁 保存された座席配置</div>
+      <p style="color: #666; font-style: italic;">保存された座席配置はありません</p>
+    </div>
   </div>
 </div>
 
 <script>
-  // 設定保存機能（仮実装）
-  function saveConfiguration() {
-      alert('設定を保存しました（実装予定）');
-  }
-
   // 座席クリック処理
   document.querySelectorAll('.seat').forEach(seat => {
       seat.addEventListener('click', function() {
@@ -276,6 +446,17 @@
           if (this.checked) {
               preventSameGender.checked = false;
           }
+      });
+
+      // 成功・エラーメッセージを自動で消す
+      const messages = document.querySelectorAll('.message');
+      messages.forEach(message => {
+          setTimeout(() => {
+              message.style.opacity = '0';
+              setTimeout(() => {
+                  message.remove();
+              }, 300);
+          }, 5000); // 5秒後に消える
       });
   });
 </script>
