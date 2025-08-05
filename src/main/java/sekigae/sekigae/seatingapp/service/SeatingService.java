@@ -100,24 +100,27 @@ public class SeatingService {
   }
 
   /**
-   * 現在の座席をシャッフルするためのメソッドです
+   * 現在の座席配置を取得する（シャッフルしない） データベースに保存されている座席位置情報を元に座席表を作成
    *
    * @param rows    現在の座席の行数
    * @param columns 現在の座席の列数
-   * @return 新しい座席配置（２次元配列として受け取ります。）
+   * @return 現在の座席配置（２次元配列として受け取ります。）
    */
   public Student[][] getSeatingChartWithGender(int rows, int columns) {
     // 全生徒を取得
     List<Student> allStudents = studentService.getAllStudents();
 
     Student[][] chart = new Student[rows][columns];
-    Collections.shuffle(allStudents);
 
-    int index = 0;
-    for (int r = 0; r < rows; r++) {
-      for (int c = 0; c < columns; c++) {
-        if (index < allStudents.size()) {
-          chart[r][c] = allStudents.get(index++);
+    // 各生徒をデータベースに保存されている座席位置に配置
+    for (Student student : allStudents) {
+      if (student.getSeatRow() != null && student.getSeatColumn() != null) {
+        int row = student.getSeatRow() - 1; // 1始まりを0始まりに変換
+        int col = student.getSeatColumn() - 1;
+
+        // 範囲チェック
+        if (row >= 0 && row < rows && col >= 0 && col < columns) {
+          chart[row][col] = student;
         }
       }
     }
@@ -126,6 +129,13 @@ public class SeatingService {
   }
 
 
+  /**
+   * 座席をシャッフルして新しい配置を作成し、データベースに保存する
+   *
+   * @param rows    座席の行数
+   * @param columns 座席の列数
+   * @return シャッフルされた座席配置
+   */
   public Student[][] shuffleSeatingChart(int rows, int columns) {
     // すべての学生を取得
     List<Student> allStudents = studentRepository.findAll();
@@ -136,19 +146,32 @@ public class SeatingService {
     // 座席表（2次元配列）を初期化
     Student[][] chart = new Student[rows][columns];
 
-    // 学生を座席表に配置
+    // 学生を座席表に配置し、同時にデータベースの座席位置も更新
     int index = 0;
     for (int r = 0; r < rows; r++) {
       for (int c = 0; c < columns; c++) {
         if (index < allStudents.size()) {
-          chart[r][c] = allStudents.get(index++);
+          Student student = allStudents.get(index++);
+          chart[r][c] = student;
+
+          // データベースの座席位置を更新（1始まりで保存）
+          student.setSeatRow(r + 1);
+          student.setSeatColumn(c + 1);
+          studentRepository.save(student);
         } else {
           chart[r][c] = null; // 生徒が足りないときはnull
         }
       }
     }
 
+    // まだ座席に配置されていない学生がいる場合、座席位置をクリア
+    for (int i = index; i < allStudents.size(); i++) {
+      Student student = allStudents.get(i);
+      student.setSeatRow(null);
+      student.setSeatColumn(null);
+      studentRepository.save(student);
+    }
+
     return chart;
   }
-
 }
