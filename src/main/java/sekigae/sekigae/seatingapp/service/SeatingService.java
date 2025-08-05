@@ -148,14 +148,31 @@ public class SeatingService {
    * @return シャッフルされた座席配置
    */
   public Student[][] shuffleSeatingChart(int rows, int columns, boolean alternateGenders) {
+    return shuffleSeatingChart(rows, columns, alternateGenders, false);
+  }
+
+  /**
+   * 座席をシャッフルして新しい配置を作成し、データベースに保存する
+   *
+   * @param rows             座席の行数
+   * @param columns          座席の列数
+   * @param alternateGenders 男女を交互に配置するかどうか
+   * @param alternateColumns 列単位で男女を分けるかどうか
+   * @return シャッフルされた座席配置
+   */
+  public Student[][] shuffleSeatingChart(int rows, int columns, boolean alternateGenders,
+      boolean alternateColumns) {
     // すべての学生を取得
     List<Student> allStudents = studentRepository.findAll();
 
     // 座席表（2次元配列）を初期化
     Student[][] chart = new Student[rows][columns];
 
-    if (alternateGenders) {
-      // 男女交互配置の場合
+    if (alternateColumns) {
+      // 列単位で男女交互配置の場合
+      chart = arrangeStudentsByColumns(allStudents, rows, columns);
+    } else if (alternateGenders) {
+      // チェスボード式男女交互配置の場合
       chart = arrangeStudentsAlternating(allStudents, rows, columns);
     } else {
       // 通常のランダム配置
@@ -170,7 +187,52 @@ public class SeatingService {
   }
 
   /**
-   * 男女を交互に配置する
+   * 列単位で男女を交互に配置する
+   */
+  private Student[][] arrangeStudentsByColumns(List<Student> allStudents, int rows, int columns) {
+    Student[][] chart = new Student[rows][columns];
+
+    // 男子と女子を分ける
+    List<Student> maleStudents = allStudents.stream()
+        .filter(s -> "男子".equals(s.getGender()))
+        .collect(java.util.stream.Collectors.toList());
+    List<Student> femaleStudents = allStudents.stream()
+        .filter(s -> "女子".equals(s.getGender()))
+        .collect(java.util.stream.Collectors.toList());
+
+    // それぞれをシャッフル
+    Collections.shuffle(maleStudents);
+    Collections.shuffle(femaleStudents);
+
+    int maleIndex = 0;
+    int femaleIndex = 0;
+
+    // 列ごとに処理
+    for (int c = 0; c < columns; c++) {
+      boolean isMaleColumn = (c % 2 == 0); // 偶数列は男子、奇数列は女子
+
+      for (int r = 0; r < rows; r++) {
+        if (isMaleColumn && maleIndex < maleStudents.size()) {
+          // 男子の列
+          chart[r][c] = maleStudents.get(maleIndex++);
+        } else if (!isMaleColumn && femaleIndex < femaleStudents.size()) {
+          // 女子の列
+          chart[r][c] = femaleStudents.get(femaleIndex++);
+        } else if (maleIndex < maleStudents.size()) {
+          // 女子が足りない場合は男子を配置
+          chart[r][c] = maleStudents.get(maleIndex++);
+        } else if (femaleIndex < femaleStudents.size()) {
+          // 男子が足りない場合は女子を配置
+          chart[r][c] = femaleStudents.get(femaleIndex++);
+        }
+      }
+    }
+
+    return chart;
+  }
+
+  /**
+   * 男女を交互に配置する（チェスボードパターン）
    */
   private Student[][] arrangeStudentsAlternating(List<Student> allStudents, int rows, int columns) {
     Student[][] chart = new Student[rows][columns];
