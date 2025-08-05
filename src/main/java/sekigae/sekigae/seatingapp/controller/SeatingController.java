@@ -107,14 +107,21 @@ public class SeatingController {
   }
 
 
+  /**
+   * 座席をシャッフルする（制約条件を考慮）
+   */
   @PostMapping("/shuffle")
   public String shuffleSeatingChart(
       @RequestParam("rows") int rows,
       @RequestParam("columns") int columns,
+      @RequestParam(value = "preventSameGender", required = false) Boolean preventSameGender,
       Model model) {
 
-    // ランダムにシャッフルした座席表を取得
-    Student[][] seatingChart = seatingService.shuffleSeatingChart(rows, columns);
+    // 制約条件の確認
+    boolean alternateGenders = Boolean.TRUE.equals(preventSameGender);
+
+    // ランダムにシャッフルした座席表を取得（制約条件を適用）
+    Student[][] seatingChart = seatingService.shuffleSeatingChart(rows, columns, alternateGenders);
 
     // 学生データも追加（必要であれば）
     List<Student> students = studentService.getAllStudents();

@@ -128,7 +128,6 @@ public class SeatingService {
     return chart;
   }
 
-
   /**
    * 座席をシャッフルして新しい配置を作成し、データベースに保存する
    *
@@ -137,41 +136,127 @@ public class SeatingService {
    * @return シャッフルされた座席配置
    */
   public Student[][] shuffleSeatingChart(int rows, int columns) {
+    return shuffleSeatingChart(rows, columns, false);
+  }
+
+  /**
+   * 座席をシャッフルして新しい配置を作成し、データベースに保存する
+   *
+   * @param rows             座席の行数
+   * @param columns          座席の列数
+   * @param alternateGenders 男女を交互に配置するかどうか
+   * @return シャッフルされた座席配置
+   */
+  public Student[][] shuffleSeatingChart(int rows, int columns, boolean alternateGenders) {
     // すべての学生を取得
     List<Student> allStudents = studentRepository.findAll();
-
-    // ランダムに並び替える
-    Collections.shuffle(allStudents);
 
     // 座席表（2次元配列）を初期化
     Student[][] chart = new Student[rows][columns];
 
-    // 学生を座席表に配置し、同時にデータベースの座席位置も更新
-    int index = 0;
+    if (alternateGenders) {
+      // 男女交互配置の場合
+      chart = arrangeStudentsAlternating(allStudents, rows, columns);
+    } else {
+      // 通常のランダム配置
+      Collections.shuffle(allStudents);
+      chart = arrangeStudentsNormally(allStudents, rows, columns);
+    }
+
+    // データベースの座席位置を更新
+    updateSeatPositionsInDatabase(chart, rows, columns);
+
+    return chart;
+  }
+
+  /**
+   * 男女を交互に配置する
+   */
+  private Student[][] arrangeStudentsAlternating(List<Student> allStudents, int rows, int columns) {
+    Student[][] chart = new Student[rows][columns];
+
+    // 男子と女子を分ける
+    List<Student> maleStudents = allStudents.stream()
+        .filter(s -> "男子".equals(s.getGender()))
+        .collect(java.util.stream.Collectors.toList());
+    List<Student> femaleStudents = allStudents.stream()
+        .filter(s -> "女子".equals(s.getGender()))
+        .collect(java.util.stream.Collectors.toList());
+
+    // それぞれをシャッフル
+    Collections.shuffle(maleStudents);
+    Collections.shuffle(femaleStudents);
+
+    int maleIndex = 0;
+    int femaleIndex = 0;
+    boolean shouldBeMale = true; // 最初は男子から開始
+
+    // チェスボード式に配置
     for (int r = 0; r < rows; r++) {
       for (int c = 0; c < columns; c++) {
-        if (index < allStudents.size()) {
-          Student student = allStudents.get(index++);
-          chart[r][c] = student;
+        // チェスボードパターンで男女を決定
+        boolean isMalePosition = ((r + c) % 2 == 0) ? shouldBeMale : !shouldBeMale;
 
-          // データベースの座席位置を更新（1始まりで保存）
-          student.setSeatRow(r + 1);
-          student.setSeatColumn(c + 1);
-          studentRepository.save(student);
-        } else {
-          chart[r][c] = null; // 生徒が足りないときはnull
+        if (isMalePosition && maleIndex < maleStudents.size()) {
+          chart[r][c] = maleStudents.get(maleIndex++);
+        } else if (!isMalePosition && femaleIndex < femaleStudents.size()) {
+          chart[r][c] = femaleStudents.get(femaleIndex++);
+        } else if (maleIndex < maleStudents.size()) {
+          // 女子が足りない場合は男子を配置
+          chart[r][c] = maleStudents.get(maleIndex++);
+        } else if (femaleIndex < femaleStudents.size()) {
+          // 男子が足りない場合は女子を配置
+          chart[r][c] = femaleStudents.get(femaleIndex++);
         }
       }
     }
 
-    // まだ座席に配置されていない学生がいる場合、座席位置をクリア
-    for (int i = index; i < allStudents.size(); i++) {
-      Student student = allStudents.get(i);
-      student.setSeatRow(null);
-      student.setSeatColumn(null);
-      studentRepository.save(student);
+    return chart;
+  }
+
+  /**
+   * 通常のランダム配置
+   */
+  private Student[][] arrangeStudentsNormally(List<Student> allStudents, int rows, int columns) {
+    Student[][] chart = new Student[rows][columns];
+
+    int index = 0;
+    for (int r = 0; r < rows; r++) {
+      for (int c = 0; c < columns; c++) {
+        if (index < allStudents.size()) {
+          chart[r][c] = allStudents.get(index++);
+        } else {
+          chart[r][c] = null;
+        }
+      }
     }
 
     return chart;
+  }
+
+  /**
+   * データベースの座席位置を更新
+   */
+  private void updateSeatPositionsInDatabase(Student[][] chart, int rows, int columns) {
+    // まず全学生の座席位置をクリア
+    List<Student> allStudents = studentRepository.findAll();
+    for (Student student : allStudents) {
+      student.setSeatRow(null);
+      student.setSeatColumn(null);
+    }
+
+    // 座席表に配置された学生の位置を更新
+    for (int r = 0; r < rows; r++) {
+      for (int c = 0; c < columns; c++) {
+        if (chart[r][c] != null) {
+          Student student = chart[r][c];
+          student.setSeatRow(r + 1); // 1始まりで保存
+          student.setSeatColumn(c + 1);
+        }
+      }
+    }
+
+    // データベースに保存
+    studentRepository.saveAll(allStudents);
   }
 }
