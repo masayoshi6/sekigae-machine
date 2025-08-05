@@ -207,8 +207,16 @@
         <div class="control-title">🔄 制約で制限する</div>
         <div class="constraint-options">
           <label>
+            <input type="checkbox" name="preventAdjacent" id="preventAdjacent">
+            男子の隣席から女子を排除する（未実装）
+          </label>
+          <label>
             <input type="checkbox" name="preventSameGender" id="preventSameGender">
-            男女の座席を交互にする
+            男女の座席を交互にする（チェスボードパターン）
+          </label>
+          <label>
+            <input type="checkbox" name="alternateColumns" id="alternateColumns">
+            列単位で男女を分ける（1列目：男子、2列目：女子...）
           </label>
         </div>
       </div>
@@ -218,7 +226,7 @@
         <div class="constraint-options">
           <label>
             <input type="checkbox" name="specificStudents" id="specificStudents">
-            交換対象生徒を選ぶ
+            交換対象を生徒を選ぶ
           </label>
         </div>
       </div>
@@ -251,6 +259,26 @@
               alert(`座席 ${row}行${col}列: ${studentName}`);
           } else {
               alert(`座席 ${row}行${col}列: 空席`);
+          }
+      });
+  });
+
+  // チェックボックスの排他制御
+  document.addEventListener('DOMContentLoaded', function() {
+      const preventSameGender = document.getElementById('preventSameGender');
+      const alternateColumns = document.getElementById('alternateColumns');
+
+      // チェスボードパターンがチェックされたら列単位のチェックを外す
+      preventSameGender.addEventListener('change', function() {
+          if (this.checked) {
+              alternateColumns.checked = false;
+          }
+      });
+
+      // 列単位がチェックされたらチェスボードパターンのチェックを外す
+      alternateColumns.addEventListener('change', function() {
+          if (this.checked) {
+              preventSameGender.checked = false;
           }
       });
   });

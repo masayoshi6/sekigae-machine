@@ -115,13 +115,16 @@ public class SeatingController {
       @RequestParam("rows") int rows,
       @RequestParam("columns") int columns,
       @RequestParam(value = "preventSameGender", required = false) Boolean preventSameGender,
+      @RequestParam(value = "alternateColumns", required = false) Boolean alternateColumns,
       Model model) {
 
     // 制約条件の確認
     boolean alternateGenders = Boolean.TRUE.equals(preventSameGender);
+    boolean alternateByColumns = Boolean.TRUE.equals(alternateColumns);
 
     // ランダムにシャッフルした座席表を取得（制約条件を適用）
-    Student[][] seatingChart = seatingService.shuffleSeatingChart(rows, columns, alternateGenders);
+    Student[][] seatingChart = seatingService.shuffleSeatingChart(rows, columns, alternateGenders,
+        alternateByColumns);
 
     // 学生データも追加（必要であれば）
     List<Student> students = studentService.getAllStudents();
@@ -133,5 +136,4 @@ public class SeatingController {
 
     return "seating/chart";
   }
-
 }
