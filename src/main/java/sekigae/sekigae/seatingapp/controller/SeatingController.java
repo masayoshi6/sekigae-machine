@@ -1,4 +1,5 @@
 package sekigae.sekigae.seatingapp.controller;
+//あいうえお
 
 import jakarta.validation.Valid;
 import java.util.List;
