@@ -26,7 +26,6 @@ import lombok.Setter;
 @Builder
 public class Student {
 
-  //あいうえお
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
