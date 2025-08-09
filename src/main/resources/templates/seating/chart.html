@@ -32,12 +32,17 @@
         font-weight: bold;
     }
 
+    /* 黒板と座席の共通コンテナ */
+    .classroom-container {
+        max-width: 560px; /* 5列 × (100px座席 + 12pxギャップ) + 最後のギャップ分 */
+        margin: 0 auto;
+    }
+
     .seating-grid {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         gap: 12px;
-        max-width: 540px;
-        margin: 0 auto 0 calc(50% - 290px);
+        width: 100%;
     }
 
     .seat {
@@ -159,10 +164,8 @@
         border-radius: 5px;
         font-weight: bold;
         font-size: 16px;
-        max-width: 540px;
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 20px;
+        width: 100%; /* コンテナ幅に合わせる */
+        box-sizing: border-box;
     }
 
     .shuffle-form {
@@ -292,23 +295,26 @@
   <div class="seating-area">
     <div class="seating-title">今の座席 ℹ️</div>
 
-    <!-- 黒板 -->
-    <div class="blackboard">
-      黒板
-    </div>
+    <!-- 黒板と座席を同じ横幅に統一 -->
+    <div class="classroom-container">
+      <!-- 黒板 -->
+      <div class="blackboard">
+        黒板
+      </div>
 
-    <!-- 座席グリッド -->
-    <div class="seating-grid">
-      <th:block th:each="row, rowStat : ${seatingChart}">
-        <th:block th:each="seat, colStat : ${row}">
-          <div class="seat"
-               th:classappend="${seat != null} ? (${seat.gender} == '男子' ? ' male' : ' female') : ''"
-               th:data-row="${rowStat.index + 1}"
-               th:data-col="${colStat.index + 1}">
-            <span th:text="${seat != null} ? ${seat.name} : ''"></span>
-          </div>
+      <!-- 座席グリッド -->
+      <div class="seating-grid">
+        <th:block th:each="row, rowStat : ${seatingChart}">
+          <th:block th:each="seat, colStat : ${row}">
+            <div class="seat"
+                 th:classappend="${seat != null} ? (${seat.gender} == '男子' ? ' male' : ' female') : ''"
+                 th:data-row="${rowStat.index + 1}"
+                 th:data-col="${colStat.index + 1}">
+              <span th:text="${seat != null} ? ${seat.name} : ''"></span>
+            </div>
+          </th:block>
         </th:block>
-      </th:block>
+      </div>
     </div>
   </div>
 
@@ -335,16 +341,6 @@
           <label>
             <input type="checkbox" name="alternateColumns" id="alternateColumns">
             列単位で男女を分ける（1列目：男子、2列目：女子...）
-          </label>
-        </div>
-      </div>
-
-      <div class="control-section">
-        <div class="control-title">🎲 交換対象を絞って</div>
-        <div class="constraint-options">
-          <label>
-            <input type="checkbox" name="specificStudents" id="specificStudents">
-            交換対象生徒を選ぶ
           </label>
         </div>
       </div>
