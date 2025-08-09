@@ -17,28 +17,39 @@ public class StudentService {
   private final StudentRepository studentRepository;
 
   /**
-   * 全ての生徒を取得する
+   * 全ての生徒情報を取得するメソッドです
+   *
+   * @return 生徒情報（全件）
    */
   public List<Student> getAllStudents() {
     return studentRepository.findAll();
   }
 
   /**
-   * 名前で検索（部分一致）
+   * 生徒を名前で検索するためのメソッドです
+   *
+   * @param keyword 生徒氏名
+   * @return 検索をかけた生徒情報のリスト
    */
   public List<Student> searchByName(String keyword) {
     return studentRepository.findByNameContaining(keyword);
   }
 
   /**
-   * 性別で検索
+   * 生徒を性別で検索します
+   *
+   * @param gender 男子　または　女子
+   * @return 該当する性別の生徒情報のリスト
    */
   public List<Student> getByGender(String gender) {
     return studentRepository.findByGender(gender);
   }
 
   /**
-   * 生徒を新規登録する
+   * 生徒を新規登録するメソッドです
+   *
+   * @param student 新規登録のフォーム画面で入力した情報を持つ生徒オブジェクト
+   * @return 新規登録のフォーム画面で入力した生徒情報をDBに保存します
    */
   public Student registerStudent(Student student) {
 
@@ -53,7 +64,10 @@ public class StudentService {
   }
 
   /**
-   * 指定IDの生徒を取得する（見つからなければnullを返す）
+   * 指定IDの生徒情報を取得するメソッドです（該当する生徒が見つからない場合はnullを返します）
+   *
+   * @param id 生徒ID
+   * @return 
    */
   public Student getStudentById(Long id) {
     Optional<Student> student = studentRepository.findById(id);
