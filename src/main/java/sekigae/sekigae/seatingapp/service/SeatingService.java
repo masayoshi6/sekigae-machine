@@ -45,7 +45,7 @@ public class SeatingService {
   }
 
   /**
-   * 現在の座席表の行数を取得
+   * 現在の座席表の行数を取得します
    *
    * @return 現在設定されている行数（デフォルト: 6）
    */
@@ -61,7 +61,7 @@ public class SeatingService {
   }
 
   /**
-   * 現在の座席表の列数を取得
+   * 現在の座席表の列数を取得します
    *
    * @return 現在設定されている列数（デフォルト: 5）
    */
@@ -74,7 +74,7 @@ public class SeatingService {
   }
 
   /**
-   * 座席表設定を保存
+   * 座席表設定を保存します
    *
    * @param rows    行数
    * @param columns 列数
@@ -100,7 +100,7 @@ public class SeatingService {
   }
 
   /**
-   * 現在の座席配置を取得する（シャッフルしない） データベースに保存されている座席位置情報を元に座席表を作成
+   * 現在の座席配置を取得する（シャッフルしない） データベースに保存されている座席位置情報を元に座席表を作成します
    *
    * @param rows    現在の座席の行数
    * @param columns 現在の座席の列数
@@ -129,7 +129,7 @@ public class SeatingService {
   }
 
   /**
-   * 座席をシャッフルして新しい配置を作成し、データベースに保存する
+   * 座席をシャッフルして新しい配置を作成し、データベースに保存します
    *
    * @param rows    座席の行数
    * @param columns 座席の列数
@@ -140,7 +140,7 @@ public class SeatingService {
   }
 
   /**
-   * 座席をシャッフルして新しい配置を作成し、データベースに保存する
+   * 座席をシャッフルして新しい配置を作成し、データベースに保存します
    *
    * @param rows             座席の行数
    * @param columns          座席の列数
@@ -152,7 +152,7 @@ public class SeatingService {
   }
 
   /**
-   * 座席をシャッフルして新しい配置を作成し、データベースに保存する
+   * 座席をシャッフルして新しい配置を作成し、データベースに保存します
    *
    * @param rows             座席の行数
    * @param columns          座席の列数
