@@ -123,10 +123,25 @@ classDiagram
     Student --> Seat
     SeatingController --> SeatingService
     SeatingService --> StudentRepository
+    style Student fill: #f4d03f;stroke: #333;stroke-width:2px
+style Seat fill: #aed6f1;stroke: #333;stroke-width:2px
+style SeatingController fill: #f5b7b1;stroke: #333;stroke-width:2px
+style SeatingService fill: #abebc6;stroke: #333;stroke-width:2px
+style StudentRepository fill: #d7bde2;stroke:#333;stroke-width:2px
+```
 
-    style Student fill:#f4d03f;stroke:#333;stroke-width:2px
-    style Seat fill:#aed6f1;stroke:#333;stroke-width:2px
-    style SeatingController fill:#f5b7b1;stroke:#333;stroke-width:2px
-    style SeatingService fill:#abebc6;stroke:#333;stroke-width:2px
-    style StudentRepository fill:#d7bde2;stroke:#333;stroke-width:2px
-
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant C as StudentController
+    participant S as StudentService
+    participant DB as Database
+    U ->> C: POST /shuffle
+    C ->> S: shuffleSeats()
+    S ->> DB: SELECT * FROM students
+    DB -->> S: Student List
+    S ->> DB: UPDATE seat_number (shuffled)
+    DB -->> S: OK
+    S -->> C: void
+    C -->> U: Redirect to /list
+```
