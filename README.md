@@ -31,7 +31,7 @@ Spring Boot + MySQL + Thymeleaf を利用したWebアプリケーションです
 ## 技術スタック
 
 - **言語**: Java 21
-- **フレームワーク**: Spring Boot 3.2.x
+- **フレームワーク**: Spring Boot 3.4.3
     - Spring Web
     - Spring Data JPA
     - Thymeleaf
