@@ -32,6 +32,18 @@ Spring Boot + MySQL + Thymeleaf を利用したWebアプリケーションです
 ### 🔺 生徒の新規登録
 https://github.com/user-attachments/assets/d22bba92-4aec-4d84-80c1-93f7fce21587
 
+### 🔺 現在の座席の保存機能
+https://github.com/user-attachments/assets/e8db9dfd-aaed-457d-aaea-e926b65988f6
+
+### 🔺 過去に保存した座席配置に戻す
+https://github.com/user-attachments/assets/671c331b-63c4-49ce-b4b4-72fe5f28489d
+
+### 🔺 座席をチェス版のように男女交互に配置させる
+https://github.com/user-attachments/assets/98285342-73ab-4216-b750-65c5ad9e11b1
+
+### 🔺 男子と女子を列別に配置させる
+https://github.com/user-attachments/assets/ba07f169-d3bd-4d10-bfb7-3956b2e2ce10
+
 
 ## 🔸 技術スタック
 
