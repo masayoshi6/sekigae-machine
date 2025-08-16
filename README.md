@@ -148,4 +148,4 @@ sequenceDiagram
     C -->> U: Redirect to /list
 ```
 
-[短い動画.mov](../../Desktop/%E7%9F%AD%E3%81%84%E5%8B%95%E7%94%BB.mov)
+/Users/okumurakiyoshikou/Desktop/短い動画.mov
