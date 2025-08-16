@@ -31,13 +31,13 @@ Spring Boot + MySQL + Thymeleaf を利用したWebアプリケーションです
 ## 🔸 技術スタック
 
 - **言語**: Java 21
-- **フレームワーク**: Spring Boot 3.2.0
+- **フレームワーク**: Spring Boot 3. 2. 0
     - Spring Web
     - Spring Data JPA
     - Thymeleaf
     - Validation
     - Actuator
-- **DB**: MySQL 8.x（開発環境）、H2（テスト環境）
+- **DB**: MySQL（開発環境）、H2（テスト環境）
 - **ビルドツール**: Gradle
 - **その他ライブラリ**
     - Lombok
