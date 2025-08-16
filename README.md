@@ -148,4 +148,4 @@ sequenceDiagram
     C -->> U: Redirect to /list
 ```
 
-[座席保存.mov](../../Desktop/%E5%BA%A7%E5%B8%AD%E4%BF%9D%E5%AD%98.mov)
+[短い動画.mov](../../Desktop/%E7%9F%AD%E3%81%84%E5%8B%95%E7%94%BB.mov)
