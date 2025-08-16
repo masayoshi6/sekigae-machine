@@ -51,7 +51,7 @@ Spring Boot + MySQL + Thymeleaf を利用したWebアプリケーションです
 
 **使用技術**  
 <img src="https://img.shields.io/badge/language-Java 21-007396.svg">
-<img src="https://img.shields.io/badge/framework-springboot 3.4.3-6DB33F.svg?logo=springboot&logoColor=#000000">
+<img src="https://img.shields.io/badge/framework-springboot 3.2.0-6DB33F.svg?logo=springboot&logoColor=#000000">
 <img src="https://img.shields.io/badge/-MySQL-4479A1.svg?logo=mysql&logoColor=FFFFFF">
 <img src="https://img.shields.io/badge/-MyBatis-990000.svg">
 <img src="https://img.shields.io/badge/-JUnit5-25A162.svg?logo=JUnit5&logoColor=FFFFFF">
@@ -79,6 +79,8 @@ Spring Boot + MySQL + Thymeleaf を利用したWebアプリケーションです
 - モバイル端末対応UI
 
 - クラウド環境（AWS）でのデプロイ
+
+- GitHubActionsを用いたCI/CD環境の構築
 
 ---
 
@@ -145,3 +147,5 @@ sequenceDiagram
     S -->> C: void
     C -->> U: Redirect to /list
 ```
+
+[座席保存.mov](../../Desktop/%E5%BA%A7%E5%B8%AD%E4%BF%9D%E5%AD%98.mov)
