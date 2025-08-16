@@ -1,6 +1,6 @@
 # 席替えアプリ
 
-## 📌はじめに
+## 📌 はじめに
 
 **席替えアプリ**は、教室や会議室などの座席割り当てを簡単に管理・実行できるWebアプリです。  
 ユーザーは登録された受講生の座席表を閲覧・シャッフル・固定などの操作が可能です。  
@@ -28,7 +28,7 @@ Spring Boot + MySQL + Thymeleaf を利用したWebアプリケーションです
 
 ---
 
-## 技術スタック
+## 🔸 技術スタック
 
 - **言語**: Java 21
 - **フレームワーク**: Spring Boot 3.4.3
@@ -47,7 +47,7 @@ Spring Boot + MySQL + Thymeleaf を利用したWebアプリケーションです
 
 ---
 
-### 開発環境
+### 🔶 開発環境
 
 **使用技術**  
 <img src="https://img.shields.io/badge/language-Java 21-007396.svg">
@@ -64,7 +64,7 @@ Spring Boot + MySQL + Thymeleaf を利用したWebアプリケーションです
 <img src="https://img.shields.io/badge/-Postman-FF6C37.svg?logo=postman&logoColor=FFFFFF">
 <img src="https://img.shields.io/badge/-OpenAPI-6BA539.svg?logo=openapiinitiative&logoColor=FFFFFF">
 
-## 想定ユーザー
+## 🔵 想定ユーザー
 
 - 高校・中学校の教員
 
@@ -72,7 +72,7 @@ Spring Boot + MySQL + Thymeleaf を利用したWebアプリケーションです
 
 - 学級運営に携わる教育支援スタッフ
 
-## 今後の改善予定
+## 🟡 今後の改善予定
 
 - 出席番号や成績に基づく配置条件の追加
 
@@ -84,7 +84,7 @@ Spring Boot + MySQL + Thymeleaf を利用したWebアプリケーションです
 
 ---
 
-# プロジェクトのクローン
+# 🔴 プロジェクトのクローン
 
 git clone https://github.com/masayoshi6/sekigae-machine.git
 
@@ -92,7 +92,7 @@ cd sekigae
 
 ## 📂 アーキテクチャ図解
 
-### クラス図
+### ◆ クラス図
 
 ```mermaid
 classDiagram
@@ -132,6 +132,8 @@ style SeatingService fill: #abebc6;stroke: #333;stroke-width:2px
 style StudentRepository fill: #d7bde2;stroke:#333;stroke-width:2px
 ```
 
+### ◆ シーケンス図
+
 ```mermaid
 sequenceDiagram
     participant U as User
@@ -147,5 +149,3 @@ sequenceDiagram
     S -->> C: void
     C -->> U: Redirect to /list
 ```
-
-/Users/okumurakiyoshikou/Desktop/短い動画.mov
