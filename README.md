@@ -125,11 +125,11 @@ classDiagram
     Student --> Seat
     SeatingController --> SeatingService
     SeatingService --> StudentRepository
-    style Student fill: #f4d03f;stroke: #333;stroke-width:2px
-style Seat fill: #aed6f1;stroke: #333;stroke-width:2px
-style SeatingController fill: #f5b7b1;stroke: #333;stroke-width:2px
-style SeatingService fill: #abebc6;stroke: #333;stroke-width:2px
-style StudentRepository fill: #d7bde2;stroke:#333;stroke-width:2px
+    style Student fill: #f4d03f, stroke: #333, stroke-width: 2px, color: #000
+    style Seat fill: #aed6f1, stroke: #333, stroke-width: 2px, color: #000
+    style SeatingController fill: #f5b7b1, stroke: #333, stroke-width: 2px, color: #000
+    style SeatingService fill: #abebc6, stroke: #333, stroke-width: 2px, color: #000
+    style StudentRepository fill: #d7bde2, stroke: #333, stroke-width: 2px, color: #000
 ```
 
 ### ◆ シーケンス図
