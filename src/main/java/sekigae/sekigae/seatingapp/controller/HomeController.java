@@ -1,5 +1,6 @@
 package sekigae.sekigae.seatingapp.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +24,7 @@ public class HomeController {
   private final StudentService studentService;
   private final SeatingService seatingService;
 
+  @Operation(summary = "ホーム画面出力", description = "席替えアプリケーションのホーム画面を出力させます。")
   @GetMapping("/")
   public String home(Model model) {
     // 学生データを取得
