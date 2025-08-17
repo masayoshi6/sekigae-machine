@@ -1,5 +1,6 @@
 package sekigae.sekigae.seatingapp.entity;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,6 +16,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Schema(description = "座席表保存")
 @Entity
 @Table(name = "seating_snapshots")
 @Getter
@@ -31,10 +33,10 @@ public class SeatingSnapshot {
   @Column(nullable = false)
   private String snapshotName;
 
-  @Column(name = "`rows`", nullable = false)  // バッククォートで囲む
+  @Column(name = "`rows`", nullable = false)  // バッククォートで囲む(rowsはJavaの予約語のため)
   private Integer rows;
 
-  @Column(name = "`columns`", nullable = false)  // バッククォートで囲む
+  @Column(name = "`columns`", nullable = false)  // バッククォートで囲む(columnsはJavaの予約語のため)
   private Integer columns;
 
   @Column(columnDefinition = "TEXT")

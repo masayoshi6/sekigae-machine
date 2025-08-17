@@ -1,5 +1,6 @@
 package sekigae.sekigae.seatingapp.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -28,6 +29,7 @@ public class SeatingSetupController {
   /**
    * 座席表設定画面を表示
    */
+  @Operation(summary = "座席表設定画面表示", description = "画面に表示させる座席表情報を設定します。")
   @GetMapping
   public String showSeatingSetup(Model model) {
     // 現在の設定を取得
@@ -55,6 +57,7 @@ public class SeatingSetupController {
   /**
    * 座席表設定を保存して座席表画面にリダイレクト
    */
+  @Operation(summary = "座席表設定の保存", description = "現在の座席表設定を保存します。")
   @PostMapping
   public String saveSeatingConfiguration(
       @Valid @ModelAttribute SeatingConfigurationForm form,
@@ -102,6 +105,7 @@ public class SeatingSetupController {
   /**
    * プレビュー機能：設定変更時の座席数を計算してAJAXで返す
    */
+  @Operation(summary = "座席数計算", description = "座席表設定変更後の座席数を求めます。")
   @PostMapping("/preview")
   public String previewConfiguration(
       @Valid @ModelAttribute SeatingConfigurationForm form,

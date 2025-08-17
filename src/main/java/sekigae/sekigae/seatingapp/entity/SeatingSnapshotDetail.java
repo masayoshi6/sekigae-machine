@@ -1,5 +1,6 @@
 package sekigae.sekigae.seatingapp.entity;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -15,6 +16,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Schema(description = "保存した座席表詳細")
 @Entity
 @Table(name = "seating_snapshot_details")
 @Getter

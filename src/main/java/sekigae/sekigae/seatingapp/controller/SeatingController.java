@@ -1,5 +1,6 @@
 package sekigae.sekigae.seatingapp.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -29,6 +30,7 @@ public class SeatingController {
   /**
    * 座席表を表示する
    */
+  @Operation(summary = "座席表表示", description = "現在の座席表を表示します。")
   @GetMapping
   public String showSeatingChart(Model model) {
     // 6行5列で固定
@@ -55,8 +57,13 @@ public class SeatingController {
 
 
   /**
-   * 指定した行数・列数で座席表を表示する
+   * 指定した行数・列数で座席表を表示します。
+   *
+   * @param rows    指定行数
+   * @param columns 指定列数
+   * @return 引数で指定した行列数を持つ座席表
    */
+  @Operation(summary = "座席表表示", description = "指定行列数の座席表を表示します。")
   @GetMapping("/chart")
   public String showSeatingChartWithParams(
       @RequestParam(value = "rows", defaultValue = "6") int rows,
@@ -66,8 +73,13 @@ public class SeatingController {
   }
 
   /**
-   * 座席表設定フォームから送信された場合
+   * 指定した行数・列数で座席表を表示します。
+   *
+   * @param rows    指定行数
+   * @param columns 指定列数
+   * @return 引数で指定した行列数を持つ座席表
    */
+  @Operation(summary = "座席表表示", description = "指定行列数の座席表を表示します。")
   @PostMapping("/generate")
   public String generateSeatingChart(
       @RequestParam("rows") int rows,
@@ -107,8 +119,13 @@ public class SeatingController {
   }
 
   /**
-   * 座席表を再生成する（シャッフル等）
+   * 座席表を再生成します（シャッフル等）
+   *
+   * @param rows    行数
+   * @param columns 列数
+   * @return シャッフル後の新たな座席表
    */
+  @Operation(summary = "座席のシャッフル", description = "現在の座席表をシャッフルします。")
   @PostMapping("/regenerate")
   public String regenerateSeatingChart(
       @RequestParam("rows") int rows,
@@ -122,6 +139,7 @@ public class SeatingController {
   /**
    * 座席をシャッフルする（制約条件を考慮）
    */
+  @Operation(summary = "座席のシャッフル", description = "現在の座席表をシャッフルします。")
   @PostMapping("/shuffle")
   public String shuffleSeatingChart(
       @RequestParam("rows") int rows,
@@ -156,6 +174,7 @@ public class SeatingController {
   /**
    * 現在の座席配置を保存する
    */
+  @Operation(summary = "座席表保存", description = "現在の座席表を保存します。")
   @PostMapping("/save")
   public String saveSeatingConfiguration(
       @RequestParam("rows") int rows,
@@ -180,6 +199,7 @@ public class SeatingController {
   /**
    * 保存された座席配置を復元する
    */
+  @Operation(summary = "座席表復元", description = "保存した座席表を復元します。")
   @PostMapping("/restore")
   public String restoreSeatingConfiguration(
       @RequestParam("snapshotId") Long snapshotId,
@@ -205,6 +225,7 @@ public class SeatingController {
   /**
    * 保存された座席配置を削除する
    */
+  @Operation(summary = "座席表削除", description = "保存中の座席表を選択削除します。")
   @PostMapping("/delete-snapshot")
   public String deleteSeatingSnapshot(
       @RequestParam("snapshotId") Long snapshotId,
