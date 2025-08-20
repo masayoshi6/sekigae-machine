@@ -1,6 +1,7 @@
 package sekigae.sekigae.seatingapp.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -194,6 +195,11 @@ public class StudentController {
                             "message": "指定された生徒情報は存在しませんでした。",
                             "code": 404
                           }""")))})
+  @Parameter(
+      name = "id",
+      description = "生徒ID（自然数値のみ）",
+      required = true,
+      example = "1")
   @GetMapping("/api/{id}")
   @ResponseBody
   public ResponseEntity<Student> getStudentById(@PathVariable Long id) {
@@ -242,6 +248,11 @@ public class StudentController {
                             "message": "指定された生徒情報は存在しませんでした。",
                             "code": 404
                           }""")))})
+  @Parameter(
+      name = "id",
+      description = "生徒ID（自然数値のみ）",
+      required = true,
+      example = "1")
   @PostMapping("/delete/{id}")
   public String deleteStudent(@PathVariable Long id) {
     studentService.deleteStudent(id);
