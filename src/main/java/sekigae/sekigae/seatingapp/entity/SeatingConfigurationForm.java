@@ -13,11 +13,13 @@ import lombok.Data;
 @Data
 public class SeatingConfigurationForm {
 
+  @Schema(description = "座席の行数", example = "5")
   @NotNull(message = "行数を入力してください")
   @Min(value = 1, message = "行数は1以上で入力してください")
   @Max(value = 20, message = "行数は20以下で入力してください")
   private Integer rows;
 
+  @Schema(description = "座席の列数", example = "5")
   @NotNull(message = "列数を入力してください")
   @Min(value = 1, message = "列数は1以上で入力してください")
   @Max(value = 20, message = "列数は20以下で入力してください")
