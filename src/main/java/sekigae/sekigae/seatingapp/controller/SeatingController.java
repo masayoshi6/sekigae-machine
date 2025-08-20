@@ -1,6 +1,7 @@
 package sekigae.sekigae.seatingapp.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -116,6 +117,16 @@ public class SeatingController {
                             "message": "指定座席表を作成することができませんでした。",
                             "code": 404
                           }""")))})
+  @Parameter(
+      name = "rows",
+      description = "新規作成する座席の列数（自然数値のみ）",
+      required = true,
+      example = "7")
+  @Parameter(
+      name = "columns",
+      description = "新規作成する座席の行数（自然数値のみ）",
+      required = true,
+      example = "6")
   @GetMapping("/chart")
   public String showSeatingChartWithParams(
       @RequestParam(value = "rows", defaultValue = "6") int rows,
@@ -164,6 +175,16 @@ public class SeatingController {
                             "message": "指定座席表を作成することができませんでした。",
                             "code": 404
                           }""")))})
+  @Parameter(
+      name = "rows",
+      description = "新規作成する座席の列数（自然数値のみ）",
+      required = true,
+      example = "7")
+  @Parameter(
+      name = "columns",
+      description = "新規作成する座席の行数（自然数値のみ）",
+      required = true,
+      example = "6")
   @PostMapping("/generate")
   public String generateSeatingChart(
       @RequestParam("rows") int rows,
@@ -242,6 +263,16 @@ public class SeatingController {
                             "message": "指定座席表を作成することができませんでした。",
                             "code": 404
                           }""")))})
+  @Parameter(
+      name = "rows",
+      description = "座席の列数（自然数値のみ）",
+      required = false,
+      example = "7")
+  @Parameter(
+      name = "columns",
+      description = "座席の行数（自然数値のみ）",
+      required = false,
+      example = "6")
   @PostMapping("/regenerate")
   public String regenerateSeatingChart(
       @RequestParam("rows") int rows,
@@ -288,6 +319,26 @@ public class SeatingController {
                             "message": "指定座席表を作成することができませんでした。",
                             "code": 404
                           }""")))})
+  @Parameter(
+      name = "rows",
+      description = "座席の列数（自然数値のみ）",
+      required = false,
+      example = "7")
+  @Parameter(
+      name = "columns",
+      description = "座席の行数（自然数値のみ）",
+      required = false,
+      example = "6")
+  @Parameter(
+      name = "preventSameGender",
+      description = "同性同士を隣接させない制約",
+      required = false,
+      example = "null")
+  @Parameter(
+      name = "alternateColumns",
+      description = "列ごとに性別を交互配置する制約",
+      required = false,
+      example = "true")
   @PostMapping("/shuffle")
   public String shuffleSeatingChart(
       @RequestParam("rows") int rows,
@@ -340,6 +391,26 @@ public class SeatingController {
                             "message": "現在の座席表を保存することができませんでした。",
                             "code": 404
                           }""")))})
+  @Parameter(
+      name = "rows",
+      description = "座席の列数（自然数値のみ）",
+      required = true,
+      example = "7")
+  @Parameter(
+      name = "columns",
+      description = "座席の行数（自然数値のみ）",
+      required = true,
+      example = "6")
+  @Parameter(
+      name = "snapshotName",
+      description = "保存する座席表名",
+      required = false,
+      example = "試験用座席")
+  @Parameter(
+      name = "snapshotName",
+      description = "定期テスト時に使用",
+      required = false,
+      example = "true")
   @PostMapping("/save")
   public String saveSeatingConfiguration(
       @RequestParam("rows") int rows,
@@ -382,6 +453,11 @@ public class SeatingController {
                             "message": "座席表復元時にエラーが発生しました。",
                             "code": 400
                           }""")))})
+  @Parameter(
+      name = "snapshotId",
+      description = "保存済み座席表のID(自動採番されています（自然数値のみ））",
+      required = true,
+      example = "1")
   @PostMapping("/restore")
   public String restoreSeatingConfiguration(
       @RequestParam("snapshotId") Long snapshotId,
@@ -410,6 +486,11 @@ public class SeatingController {
   @Operation(summary = "座席表削除", description = "保存中の座席表を選択削除します。",
       responses = {
           @ApiResponse(responseCode = "200", description = "正常に座席表情報を削除しました。"),})
+  @Parameter(
+      name = "snapshotId",
+      description = "保存済み座席表のID(自動採番されています（自然数値のみ））",
+      required = true,
+      example = "1")
   @PostMapping("/delete-snapshot")
   public String deleteSeatingSnapshot(
       @RequestParam("snapshotId") Long snapshotId,
