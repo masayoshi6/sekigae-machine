@@ -1,6 +1,9 @@
 package sekigae.sekigae.seatingapp.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +27,24 @@ public class HomeController {
   private final StudentService studentService;
   private final SeatingService seatingService;
 
-  @Operation(summary = "ホーム画面出力", description = "席替えアプリケーションのホーム画面を出力させます。")
+  @Operation(summary = "ホーム画面出力", description = "席替えアプリケーションのホーム画面を出力させます。",
+      responses = {
+          @ApiResponse(responseCode = "200", description = "正常にホーム画面を取得しました。"),
+          @ApiResponse(
+              responseCode = "404",
+              description = "ホーム画面が見つかりません。",
+              content = @Content(
+                  mediaType = "application/json",
+                  examples = @ExampleObject(
+                      name = "NotFoundExample",
+                      summary = "ホーム画面未登録",
+                      description = "ホーム画面が存在しない場合",
+                      value = """
+                          {
+                            "error": "Not Found",
+                            "message": "ホーム画面が見つかりませんでした。",
+                            "code": 404
+                          }""")))})
   @GetMapping("/")
   public String home(Model model) {
     // 学生データを取得

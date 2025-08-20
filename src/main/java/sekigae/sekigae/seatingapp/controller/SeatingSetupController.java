@@ -1,6 +1,9 @@
 package sekigae.sekigae.seatingapp.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -29,7 +32,24 @@ public class SeatingSetupController {
   /**
    * 座席表設定画面を表示
    */
-  @Operation(summary = "座席表設定画面表示", description = "画面に表示させる座席表情報を設定します。")
+  @Operation(summary = "座席表設定画面表示", description = "画面に表示させる座席表情報を設定します。",
+      responses = {
+          @ApiResponse(responseCode = "200", description = "正常に座席表設定情報を取得しました。"),
+          @ApiResponse(
+              responseCode = "404",
+              description = "座席表設定画面が表示できません。",
+              content = @Content(
+                  mediaType = "application/json",
+                  examples = @ExampleObject(
+                      name = "NotFoundExample",
+                      summary = "座席表設定画面の不成立",
+                      description = "座席表設定画面を作成することができない場合",
+                      value = """
+                          {
+                            "error": "Not Found",
+                            "message": "座席表設定画面の作成ができませんでした。",
+                            "code": 404
+                          }""")))})
   @GetMapping
   public String showSeatingSetup(Model model) {
     // 現在の設定を取得
@@ -57,7 +77,24 @@ public class SeatingSetupController {
   /**
    * 座席表設定を保存して座席表画面にリダイレクト
    */
-  @Operation(summary = "座席表設定の保存", description = "現在の座席表設定を保存します。")
+  @Operation(summary = "座席表設定の保存", description = "現在の座席表設定を保存します。",
+      responses = {
+          @ApiResponse(responseCode = "200", description = "正常に座席表設定の情報を保存しました。"),
+          @ApiResponse(
+              responseCode = "400",
+              description = "不正な設定形式です。",
+              content = @Content(
+                  mediaType = "application/json",
+                  examples = @ExampleObject(
+                      name = "BadRequestExample",
+                      summary = "座席表形式エラー",
+                      description = "行列数が数値でない場合のエラー例",
+                      value = """
+                          {
+                            "error": "Bad Request",
+                            "message": "行列の形式が不正です。１以上の整数値を指定してください。",
+                            "code": 400
+                          }""")))})
   @PostMapping
   public String saveSeatingConfiguration(
       @Valid @ModelAttribute SeatingConfigurationForm form,
@@ -105,7 +142,39 @@ public class SeatingSetupController {
   /**
    * プレビュー機能：設定変更時の座席数を計算してAJAXで返す
    */
-  @Operation(summary = "座席数計算", description = "座席表設定変更後の座席数を求めます。")
+  @Operation(summary = "座席数計算", description = "座席表設定変更後の座席数を求めます。",
+      responses = {
+          @ApiResponse(responseCode = "200", description = "正常に座席数の取得に成功しました。"),
+          @ApiResponse(
+              responseCode = "400",
+              description = "不正な行列数形式です。",
+              content = @Content(
+                  mediaType = "application/json",
+                  examples = @ExampleObject(
+                      name = "BadRequestExample",
+                      summary = "行列数形式エラー",
+                      description = "行列数が数値でない場合のエラー例",
+                      value = """
+                          {
+                            "error": "Bad Request",
+                            "message": "行列の形式が不正です。１以上の整数値を指定してください。",
+                            "code": 400
+                          }"""))),
+          @ApiResponse(
+              responseCode = "404",
+              description = "指定された行列数の座席表は作成できません。",
+              content = @Content(
+                  mediaType = "application/json",
+                  examples = @ExampleObject(
+                      name = "NotFoundExample",
+                      summary = "座席表不成立",
+                      description = "指定した行列数の座席表を作成することができない場合",
+                      value = """
+                          {
+                            "error": "Not Found",
+                            "message": "指定座席表を作成することができませんでした。",
+                            "code": 404
+                          }""")))})
   @PostMapping("/preview")
   public String previewConfiguration(
       @Valid @ModelAttribute SeatingConfigurationForm form,
