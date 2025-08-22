@@ -36,22 +36,22 @@ public class SeatingSnapshot {
   private String snapshotName;
 
   @Schema(description = "座席表の行数", example = "5")
-  @Column(name = "`rows`", nullable = false)  // バッククォートで囲む(rowsはJavaの予約語のため)
+  @Column(name = "`rows`", nullable = false)  // バッククォートで囲む(rowsはSQLの予約語のため)
   private Integer rows;
 
   @Schema(description = "座席表の列数", example = "5")
-  @Column(name = "`columns`", nullable = false)  // バッククォートで囲む(columnsはJavaの予約語のため)
+  @Column(name = "`columns`", nullable = false)  // バッククォートで囲む(columnsはSQLの予約語のため)
   private Integer columns;
 
-  @Schema(description = "保存んする座席表の概要（簡単な説明）", example = "期末テスト用の座席")
+  @Schema(description = "保存する座席表の概要（簡単な説明）", example = "期末テスト用の座席")
   @Column(columnDefinition = "TEXT")
   private String description;
 
-  @Schema(description = "座席表の保存日時", example = "2025-04-09-13:00:00")
+  @Schema(description = "座席表の保存日時", example = "2025-04-09 13:00:00")
   @Column(nullable = false)
   private LocalDateTime createdAt;
 
-  @Schema(description = "座席表の更新日時", example = "2025-05-05-14:00:00")
+  @Schema(description = "座席表の更新日時", example = "2025-05-05 14:00:00")
   @Column(nullable = false)
   private LocalDateTime updatedAt;
 
