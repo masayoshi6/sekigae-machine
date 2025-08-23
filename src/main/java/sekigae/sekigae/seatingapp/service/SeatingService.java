@@ -166,7 +166,7 @@ public class SeatingService {
     List<Student> allStudents = studentRepository.findAll();
 
     // 座席表（2次元配列）を初期化
-    Student[][] chart = new Student[rows][columns];
+    Student[][] chart;
 
     if (alternateColumns) {
       // 列単位で男女交互配置の場合
