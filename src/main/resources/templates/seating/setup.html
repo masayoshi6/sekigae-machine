@@ -361,7 +361,7 @@
     </div>
 
     <div class="button-group">
-      <button type="button" class="btn btn-preview" onclick="showPreview()">
+      <button type="button" class="btn btn-preview" onclick="showDetailedPreview()">
         👀 プレビュー表示
       </button>
       <button type="submit" class="btn btn-primary">
@@ -406,6 +406,26 @@
       updatePreview();
       document.getElementById('previewSection').style.display = 'block';
   }
+
+  function showDetailedPreview() {
+    const rows = document.getElementById('rows').value;
+    const columns = document.getElementById('columns').value;
+    const totalStudents = [[${totalStudents}]]; // Thymeleafから生徒数を取得
+
+    if (!rows || !columns) {
+        alert('行数と列数は半角の数値で入力してください。');
+        return;
+    }
+
+    if (rows < 1 || rows > 20 || columns < 1 || columns > 20) {
+        alert('行数と列数は1から20の間で入力してください。');
+        return;
+    }
+
+    // プレビュー画面に遷移（現在のタブで開く）
+    const previewUrl = `/seating/preview?rows=${rows}&columns=${columns}&students=${totalStudents}`;
+    window.location.href = previewUrl;
+}
 
   // ページロード時にプレビューを更新
   document.addEventListener('DOMContentLoaded', function() {

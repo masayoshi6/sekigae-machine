@@ -512,4 +512,37 @@ public class SeatingController {
 
     return "redirect:/seating";
   }
+
+//  @GetMapping("/preview")
+//  public String showSeatingPreview(
+//      @RequestParam int rows,
+//      @RequestParam int columns,
+//      Model model
+//  ) {
+//    // URLパラメータから設定値を取得してプレビュー画面に渡す
+//    model.addAttribute("previewRows", rows);
+//    model.addAttribute("previewColumns", columns);
+//
+//    // 生徒数などの必要な情報も取得
+//    int totalStudents = studentService.getAllStudents().size();
+//    model.addAttribute("totalStudents", totalStudents);
+//
+//    return "seating/preview";
+//  }
+
+  @GetMapping("/preview")
+  public String showSeatingPreview(
+      @RequestParam(name = "rows", required = false, defaultValue = "6") int rows,
+      @RequestParam(name = "columns", required = false, defaultValue = "5") int columns,
+      @RequestParam(name = "students", required = false, defaultValue = "0") int students,
+      Model model) {
+
+    model.addAttribute("previewRows", rows);
+    model.addAttribute("previewColumns", columns);
+    model.addAttribute("previewStudents", students);
+    model.addAttribute("previewTotalSeats", rows * columns);
+    model.addAttribute("previewEmptySeats", Math.max(0, (rows * columns) - students));
+
+    return "seating/preview"; // seating-preview.htmlを返す
+  }
 }
