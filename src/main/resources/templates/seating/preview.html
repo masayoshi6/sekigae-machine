@@ -378,13 +378,14 @@
         margin-bottom: 20px;
     }
 
+<!-- 　　座席プレビュー画面で座席１マス１マスをゆっくり拡大縮小させるアニメーション（１．２倍拡大縮小）-->
     .animate-seats {
         animation: seatPulse 2s ease-in-out infinite alternate;
     }
 
     @keyframes seatPulse {
         0% { transform: scale(1); }
-        100% { transform: scale(1.02); }
+        100% { transform: scale(1.2); }
     }
 
     @media (max-width: 768px) {
@@ -510,16 +511,27 @@
   };
 
   // URLパラメータから設定を取得（実装例）
-  function getConfigFromUrl() {
-      const urlParams = new URLSearchParams(window.location.search);
-      if (urlParams.get('rows')) {
-          currentConfig.rows = parseInt(urlParams.get('rows'));
-      }
-      if (urlParams.get('columns')) {
-          currentConfig.columns = parseInt(urlParams.get('columns'));
-      }
-      updateDisplay();
-  }
+  // URLパラメータから設定を取得
+function getConfigFromUrl() {
+    const urlParams = new URLSearchParams(window.location.search);
+
+    // 行数の取得
+    if (urlParams.get('rows')) {
+        currentConfig.rows = parseInt(urlParams.get('rows'));
+    }
+
+    // 列数の取得
+    if (urlParams.get('columns')) {
+        currentConfig.columns = parseInt(urlParams.get('columns'));
+    }
+
+    // 生徒数の取得（新しく追加）
+    if (urlParams.get('students')) {
+        currentConfig.totalStudents = parseInt(urlParams.get('students'));
+    }
+
+    updateDisplay();
+}
 
   function updateDisplay() {
       const totalSeats = currentConfig.rows * currentConfig.columns;
