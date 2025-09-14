@@ -278,6 +278,7 @@
 </head>
 <body>
 
+<!-- @{/students}はStudentController.javaのgetAllStudentsメソッドを呼び出す-->
 <div class="nav-links">
   <a th:href="@{/students}">📋 生徒一覧</a>
   <a th:href="@{/students/new}">➕ 生徒追加</a>
@@ -286,7 +287,7 @@
 
 <h1>🪑 席替えアプリケーション</h1>
 
-<!-- メッセージ表示 -->
+<!-- 座席を保存したときなどに一時的に画面上部に表示されるメッセージ -->
 <div th:if="${successMessage}" class="message success-message" th:text="${successMessage}"></div>
 <div th:if="${errorMessage}" class="message error-message" th:text="${errorMessage}"></div>
 

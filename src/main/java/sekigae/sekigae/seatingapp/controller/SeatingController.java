@@ -429,7 +429,7 @@ public class SeatingController {
           "座席配置の保存に失敗しました。");
     }
 
-    return "redirect:/seating";
+    return "redirect:/seating";  //SeatingController.javaのshowSeatingChartメソッドへ処理が飛ぶ
   }
 
   /**
