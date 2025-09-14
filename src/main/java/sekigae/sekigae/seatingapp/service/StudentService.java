@@ -42,6 +42,7 @@ public class StudentService {
    * @return 該当する性別の生徒情報のリスト
    */
   public List<Student> getByGender(String gender) {
+
     return studentRepository.findByGender(gender);
   }
 
@@ -56,10 +57,14 @@ public class StudentService {
     // 同じ座席の生徒がいるかチェック
     Student existing = studentRepository.findBySeatRowAndSeatColumn(
         student.getSeatRow(), student.getSeatColumn());
+
     if (existing != null) {
+      // ここで例外をスロー → メソッド終了
       throw new IllegalArgumentException("指定された座席にはすでに他の生徒が登録されています。");
+      // この下のコードは実行されない（到達不可能コード）
     }
 
+    // existing == null の場合のみ、ここまで↓到達する　
     return studentRepository.save(student);
   }
 
@@ -67,7 +72,7 @@ public class StudentService {
    * 指定IDの生徒情報を取得するメソッドです（該当する生徒が見つからない場合はnullを返します）
    *
    * @param id 生徒ID
-   * @return 
+   * @return
    */
   public Student getStudentById(Long id) {
     Optional<Student> student = studentRepository.findById(id);
@@ -100,6 +105,7 @@ public class StudentService {
    * @param id 学籍番号
    */
   public void deleteStudent(Long id) {
+
     studentRepository.deleteById(id);
   }
 
