@@ -378,15 +378,10 @@
         margin-bottom: 20px;
     }
 
-<!-- 　　座席プレビュー画面で座席１マス１マスをゆっくり拡大縮小させるアニメーション（１．２倍拡大縮小）-->
-    .animate-seats {
-        animation: seatPulse 2s ease-in-out infinite alternate;
-    }
-
-    @keyframes seatPulse {
-        0% { transform: scale(1); }
-        100% { transform: scale(1.2); }
-    }
+/* ホバー効果をアニメーション中は無効にする */
+.animate-seats:hover {
+    transform: none !important;
+}
 
     @media (max-width: 768px) {
         .container {
@@ -628,19 +623,88 @@ function getConfigFromUrl() {
       }
   }
 
-  let animationEnabled = false;
-  function toggleAnimation() {
-      const seats = document.querySelectorAll('.seat');
-      animationEnabled = !animationEnabled;
+let animationEnabled = false;
+let animationInterval;
 
-      seats.forEach(seat => {
-          if (animationEnabled) {
-              seat.classList.add('animate-seats');
-          } else {
-              seat.classList.remove('animate-seats');
-          }
-      });
-  }
+function toggleAnimation() {
+    console.log('toggleAnimation関数が呼び出されました');
+
+    const seats = document.querySelectorAll('.seat');
+    console.log('座席要素数:', seats.length);
+
+    if (seats.length === 0) {
+        console.log('座席要素が見つかりません。');
+        alert('座席が生成されていません。少し待ってからもう一度お試しください。');
+        return;
+    }
+
+    animationEnabled = !animationEnabled;
+    console.log('アニメーション状態:', animationEnabled);
+
+    if (animationEnabled) {
+        // JavaScriptで直接アニメーション開始
+        startDirectAnimation(seats);
+    } else {
+        // アニメーション停止
+        stopDirectAnimation(seats);
+    }
+
+    // ボタンのテキスト更新
+    const button = document.querySelector('.animation-controls button');
+    if (button) {
+        button.textContent = animationEnabled ? '⏹️ アニメーション OFF' : '✨ アニメーション ON/OFF';
+    }
+}
+
+function startDirectAnimation(seats) {
+    let scale = 1;
+    let direction = 0.005; // 拡大率の変化量
+    const minScale = 1;
+    const maxScale = 1.2;
+
+    animationInterval = setInterval(() => {
+        scale += direction;
+
+        // 拡大から縮小、縮小から拡大の切り替え
+        if (scale >= maxScale) {
+            direction = -Math.abs(direction);
+        } else if (scale <= minScale) {
+            direction = Math.abs(direction);
+        }
+
+        // 各座席に直接スタイルを適用
+        seats.forEach((seat, index) => {
+            // 元の座席タイプに応じて基本スケールを設定
+            let baseScale = 1;
+            if (seat.classList.contains('seat-occupied')) {
+                baseScale = 1.05; // 元々の拡大率を維持
+            }
+
+            const finalScale = baseScale * scale;
+            seat.style.transform = `scale(${finalScale})`;
+            seat.style.transformOrigin = 'center center';
+            seat.style.transition = 'none'; // スムーズなアニメーション
+        });
+    }, 30); // 30ms間隔で更新（約33fps）
+}
+
+function stopDirectAnimation(seats) {
+    if (animationInterval) {
+        clearInterval(animationInterval);
+        animationInterval = null;
+    }
+
+    // 元のスタイルに戻す
+    seats.forEach(seat => {
+        if (seat.classList.contains('seat-occupied')) {
+            seat.style.transform = 'scale(1.05)'; // 元の拡大率に戻す
+        } else {
+            seat.style.transform = '';
+        }
+        seat.style.transition = '';
+        seat.style.transformOrigin = '';
+    });
+}
 
   function randomizeSeats() {
       const seats = document.querySelectorAll('.seat');

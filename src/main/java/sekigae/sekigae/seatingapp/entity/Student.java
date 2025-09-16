@@ -52,12 +52,12 @@ public class Student {
   @Schema(description = "座席の行数", example = "5")
   @NotNull(message = "座席の行を入力してください")
   @Min(value = 1, message = "座席（行）は1以上にしてください")
-  @Max(value = 6, message = "座席（行）は6以下にしてください")
+  @Max(value = 20, message = "座席（行）は20以下にしてください")
   private Integer seatRow;
 
   @Schema(description = "座席の列数", example = "5")
   @NotNull(message = "座席の列を入力してください")
   @Min(value = 1, message = "座席（列）は1以上にしてください")
-  @Max(value = 5, message = "座席（列）は5以下にしてください")
+  @Max(value = 20, message = "座席（列）は20以下にしてください")
   private Integer seatColumn;
 }
